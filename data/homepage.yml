@@ -1,0 +1,149 @@
+# showcase
+showcase:
+  enable: true
+  title: "Yo! Saya Daniel Manahan Sagala."
+  subtitle: "Gamer | Matematikawan Muda | Pemancing Handal"
+  description: >
+    Siswa SMA yang jago matematika, doyan main game, dan hobi mancing. 
+    Kalau nggak lagi ngerjain PR, pasti lagi nge-headshot musuh atau nyantai di pinggir danau!
+  image:
+    x: "images/showcase/showcase.png"
+    _2x: "images/showcase/showcase@2x.png"
+  imageMobile:
+    x: "images/showcase/showcase-mobile.jpg"
+
+  button:
+    icon: "icon-mail-fill"
+    btnText: "Kontak"
+    URL: "#contact"
+
+  socialLinks:
+    - icon: "instagram"
+      URL: "https://www.instagram.com/daanilsecc/"
+    - icon: "github"
+      URL: "https://github.com/danielsagala"
+    - icon: "twitter"
+      URL: "https://twitter.com/danielsagala"
+    - icon: "facebook"
+      URL: "https://www.facebook.com/danielsagala"
+
+# about
+about:
+  enable: true
+  title: "Siapa Sih Daniel Ini?"
+  content: >
+   <p class="lead">
+      Halo guys! Saya Daniel, siswa SMA berusia 16 tahun yang lahir di era PlayStation 2 (1 April 2008).
+      Selain jago matematika, saya juga jago nge-game dan mancing!
+    </p>
+    <p>
+      Sekarang saya lagi menuntut ilmu di SMA IPEKA Balikpapan. Di luar sekolah, saya suka
+      ngajarin temen-temen cara menyelesaikan soal matematika sambil ngobrol tentang update terbaru game favorit kami.
+    </p>
+    <p>
+      Soal gaming, saya suka banget main FPS dan RPG. Tapi kadang butuh ketenangan, makanya saya suka mancing juga.
+      Entah kenapa, mancing itu menenangkan banget. Pernah nih, waktu lagi stress mikirin ujian, saya mancing
+      dan dapat ikan gede! Rasanya semua beban hilang.
+      
+  button:
+    icon: "icon-smile-fill"
+    btnText: "Mancing"
+    URL: "https://tista-buleleng.desa.id/assets/files/artikel/sedang_1696991406WhatsApp%20Image%202023-10-11%20at%2010.37.31_beab1771.jpg"
+    
+  image:
+    x: "images/who-am-i/user-picture.png"
+    _2x: "images/who-am-i/user-picture@2x.png"
+
+# education
+education:
+  enable: true
+  title: "Education"
+  items:
+    - university: "SD Katolik Santa Theresia"
+      year: "2014-2020"
+      degree: "Sekolah Dasar"
+
+    - university: "SMP Katolik Santo Mikail"
+      year: "2020-2023"
+      degree: "Sekolah Menengah Pertama"
+      
+    - university: "SMA Kristen IPEKA Balikpapan"
+      year: "2023-sekarang"
+      degree: "Sekolah Menengah Atas"
+
+# experience
+experience:
+  enable: false
+  title: "Pengalaman & Prestasi"
+  description: >
+    Meskipun masih muda, saya udah punya beberapa pencapaian nih. Dari lomba matematika sampe turnamen game!
+  button:
+    icon: "icon-trophy-fill"
+    btnText: "Lihat Semua Prestasi"
+    URL: "#achievements"
+  button2:
+    icon: "icon-profile-fill"
+    btnText: "Download CV Saya"
+    URL: "#"
+
+# Client & Work
+client_and_work:
+  title: "Clients & Works"
+  enable: false
+  
+# testimonial
+testimonial:
+  enable: true
+  title: "Kata Mereka Tentang Saya"
+  items:
+    - name: "Pak Joko"
+      position: "Guru Matematika SMA"
+      content: "Daniel itu murid yang luar biasa! Dia bisa memecahkan soal matematika kompleks sambil main PUBG Mobile. Pernah suatu kali dia menyelesaikan integral ganda saat sedang dalam middle of winning chicken dinner. Otak dan refleksnya sama-sama tajam!"
+      image:
+        x: "images/testimonials/daniel-jordan.jpg"
+        _2x: "images/testimonials/daniel-jordan@2x.jpg"
+
+    - name: "Jonathan Peters"
+      position: "Pemilik Warung Mancing"
+      content: Duh, si Daniel ini bisa dibilang legenda di kalangan pemancing! Pernah dia mancing pakai kalkulator sebagai umpan, katanya biar ikannya 'terhitung'. Yang lebih gila, dia berhasil menarik ikan seberat 100 kg cuma pakai benang dental floss. Anak ajaib memang!"
+      image:
+        x: "images/testimonials/jonathan-peters.jpg"
+        _2x: "images/testimonials/jonathan-peters@2x.jpg"
+
+    - name: "Andi"
+      position: "Teman mabar"
+      content: "Kamu tau nggak? Si Daniel itu jago banget main game, tapi caranya unik. Dia pernah nyelesein Dark Souls cuma pake controller yang dia bikin dari kalkulator scientific. Katanya sih biar sekalian belajar matematika. Gila kan? Tapi yang lebih gila, dia berhasil!"
+      image:
+        x: "images/testimonials/antonio-willis.jpg"
+        _2x: "images/testimonials/antonio-willis@2x.jpg"
+
+# contact
+contact:
+  enable: true
+  title: "Kontak"
+  form:
+    action: "https://formspree.io/f/xeojwkwn"
+    method: "POST"
+    full_name: "Nama Lengkap"
+    email: "Alamat Email"
+    message: "Masukkan pesanmu disini"
+  phone:
+    title: "Nomor Telepon"
+    number: "+62 813-5003-4543"
+  email:
+    title: "Email"
+    email: '<a href="mailto:danielsagala450@gmail.com">danielsagala450@gmail.com</a>'
+  address:
+    title: "Alamat"
+    address: "Kota Balikpapan"
+  button:
+    icon: "icon-mail-fill"
+    btnText: "Send Message"
+
+# newsletter
+newsletter:
+  enable: false
+  title: "Newsletter subscription"
+  success_message: "Successfully subscribed"
+  error_message: "Error while subscribing."
+  note: "We'll never share your email with anyone else."
