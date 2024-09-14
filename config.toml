@@ -1,4 +1,4 @@
-baseURL = "https://www.danielsagala.netlify.app"
+baseURL = "https://danielsagala.netlify.app"
 languageCode = "id"
 theme = "adritian-free-hugo-theme"
 
