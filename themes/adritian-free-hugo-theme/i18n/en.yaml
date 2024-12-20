@@ -27,7 +27,7 @@
   translation: "This is my title"
 
 - id: "showcase_description"
-  translation: "This is a good place to start with an introduction about yourself. Maybe a mention to the place <a target='_blank' href='https://www.adrianmoreno.info/'>where you work</a>. You can also mention where you live, your background and what's the purpose of the site. <br>You can download this theme from <a target='_blank' href='https://github.com/zetxek/adritian-free-hugo-theme'>github</a>, and see it live <a target='_blank' href='https://adritian-demo.vercel.app//'>as a demo site</a> or <a target='_blank' href='https://www.adrianmoreno.info'>a real one</a>.<br>You can find this content to edit in the theme.yaml file."
+  translation: "This is a good place to start with an introduction about yourself. Maybe a mention to the place <a target='_blank' href='https://www.kaushik-iyer.com/'>where you work</a>. You can also mention where you live, your background and what's the purpose of the site. <br>You can download this theme from <a target='_blank' href='https://github.com/zetxek/adritian-free-hugo-theme'>github</a>, and see it live <a target='_blank' href='https://adritian-demo.vercel.app//'>as a demo site</a> or <a target='_blank' href='https://www.kaushik-iyer.com'>a real one</a>.<br>You can find this content to edit in the theme.yaml file."
 
 - id: "showcase_button"
   translation: "Contact"
