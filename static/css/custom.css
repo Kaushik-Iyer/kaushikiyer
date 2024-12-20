@@ -1,0 +1,33 @@
+.project-detail {
+    padding: 6rem 0;
+}
+
+.project-detail h1 {
+    margin-bottom: 2rem;
+}
+
+.project-detail .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.project-detail .technologies {
+    margin: 2rem 0;
+}
+
+.project-detail .badge {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+}
+
+.project-detail .content {
+    margin-top: 3rem;
+    line-height: 1.8;
+}
+
+.project-detail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

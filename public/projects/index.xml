@@ -2,32 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on </title>
-    <link>http://localhost:1636/projects/</link>
+    <link>http://localhost:1313/projects/</link>
     <description>Recent content in Projects on </description>
     <generator>Hugo</generator>
-    <language>id</language>
-    <lastBuildDate>Sun, 25 Aug 2024 09:53:42 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1636/projects/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Sun, 01 Dec 2024 00:00:00 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Radity Finance - UI Kit</title>
-      <link>http://localhost:1636/projects/radity-finance-uikit/</link>
-      <pubDate>Sun, 25 Aug 2024 09:53:42 +0200</pubDate>
-      <guid>http://localhost:1636/projects/radity-finance-uikit/</guid>
-      <description>We have been receiving a lot of requests for a Finance Kit recently due to the popularity of Fintech.</description>
+      <title>Soccer Drop In Statistics Logger</title>
+      <link>http://localhost:1313/projects/soccer-drop-in-statistics-logger/</link>
+      <pubDate>Sun, 01 Dec 2024 00:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/projects/soccer-drop-in-statistics-logger/</guid>
+      <description>&lt;p&gt;This was a personal project on which I worked at during summer 2024. Since a long time I had been wanting to develop a proper project from scratch which was not a youtube tutorial or a walkthrough. All of the ideas for this project were things that I wanted to implement. The whole backend and frontend has been done by myself, and since I like working on backend more, unfortunately the frontend aesthetics and accessibility are not upto the mark. Anyway, the frontend is in React, and backend built in python&amp;rsquo;s FASTAPI. The scores are regularly updated from a third party API through websockets, the nearby grounds are fetched by using the user&amp;rsquo;s location and Google Places API. The website also performs Google OAuth 2.0 through the frontend itself. A large part of the project also involved figuring out the hosting aspects, including getting a domain, and hosting the frontend as well as the backend folders. I eventually got a domain free for a year through name.com, hosted the frontend through cloudflare pages in their free tier, and got to host the backend in heroku for 2 years through Github&amp;rsquo;s Student Developer Pack.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Robo Advisor</title>
-      <link>http://localhost:1636/projects/robo-advisor/</link>
-      <pubDate>Sun, 25 Aug 2024 09:53:42 +0200</pubDate>
-      <guid>http://localhost:1636/projects/robo-advisor/</guid>
-      <description>Robo Advisor is a Swiss Wealth Manager and wants to create the best digital experience for its UNHW clients across the world. We started with a whiteboard.</description>
+      <title>Traveling Salesman Problem Optimization</title>
+      <link>http://localhost:1313/projects/traveling-salesman-problem-optimization/</link>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/projects/traveling-salesman-problem-optimization/</guid>
+      <description>&lt;p&gt;Built this group project as part of Cornell&amp;rsquo;s Applications of Parallel Computers course (CS 5220), where we tackled the classic Traveling Salesman Problem using various optimization techniques. The goal was to push the boundaries of what&amp;rsquo;s possible with parallel computing.&lt;/p&gt;&#xA;&lt;p&gt;We implemented four different approaches - from exact solutions using Brute Force and Dynamic Programming to heuristic methods like Greedy and Genetic algorithms. The real challenge was optimizing these for parallel execution using OpenMP and CUDA.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Swiss Fintech Website</title>
-      <link>http://localhost:1636/projects/swiss-fintech/</link>
-      <pubDate>Sun, 25 Aug 2024 09:53:42 +0200</pubDate>
-      <guid>http://localhost:1636/projects/swiss-fintech/</guid>
-      <description>The Swiss Finance + Technology Association is the leading FinTech hub in Switzerland.</description>
+      <title>GreenTech Registry on Blockchain</title>
+      <link>http://localhost:1313/projects/greentech-registry-on-blockchain/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/projects/greentech-registry-on-blockchain/</guid>
+      <description>&lt;p&gt;I developed this project during my first semester at Cornell, as a part of my M.Eng Project for the Systems Engineering faculty. This project aims to solve some of the shortcomings of existing greentech technologies such as lack of verifiability and difficulty in tracking orders by leveraging the strengths of blockchain technology and its features of immutability, verifiability, and transparency.&lt;/p&gt;&#xA;&lt;p&gt;And since this was a part of an academic research paper as well, extensive efforts were put into performance testing of the platform, which included performing load testing under multiple simultaneous users calling computationally intensive functionalities such as create project, and upload images. These tests were performed under different request body sizes and multiple such calls. The test suites and visualizations were custom developed in Python, primarily using modules such as asyncio, locust, and matplotlib for concurrency, load test configurations, and visualizations respectively. These were custom made because Postman&amp;rsquo;s collection run functionality did not cater to this particular use case.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Replicated Key-Value Store with Paxos Consensus</title>
+      <link>http://localhost:1313/projects/replicated-key-value-store-with-paxos-consensus/</link>
+      <pubDate>Fri, 01 Sep 2023 00:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/projects/replicated-key-value-store-with-paxos-consensus/</guid>
+      <description>&lt;p&gt;Developed a robust distributed key-value store that implements fundamental distributed systems concepts, progressing through multiple stages of complexity:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Started with implementing an exactly-once RPC protocol on top of an asynchronous network, ensuring reliable communication between nodes&lt;/li&gt;&#xA;&lt;li&gt;Enhanced the system with fault-tolerance capabilities through a primary-backup replication protocol&lt;/li&gt;&#xA;&lt;li&gt;Implemented Paxos consensus algorithm to ensure strong consistency across replicas, allowing the system to handle node failures and network partitions gracefully&lt;/li&gt;&#xA;&lt;li&gt;Built comprehensive test suites to verify system behavior under various failure scenarios and message ordering conditions&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The project demonstrates practical implementation of distributed systems theory, focusing on:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>NurseBot: Healthcare Automation System</title>
+      <link>http://localhost:1313/projects/nursebot-healthcare-automation-system/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/projects/nursebot-healthcare-automation-system/</guid>
+      <description>&lt;p&gt;Developed an innovative healthcare automation system combining robotics and IoT to assist medical staff in routine patient care tasks. The project integrated multiple technologies to create a comprehensive solution for patient monitoring and medication delivery. It is a line following robot, which successfully navigates across &amp;lsquo;+&amp;rsquo; junctions, performs a U-turn at the end and starts sensory activity when the finger is placed. The value is updated immediately on the Blynk app&amp;rsquo;s displays, and then the robot automatically follows the same path back to the starting position.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

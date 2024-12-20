@@ -1,0 +1,32 @@
+{{ define "main" }}
+<section class="section project-detail rad-animation-group">
+    <div class="container rad-fade-down">
+        <div class="row">
+            <div class="col-12">
+                <h1>{{ .Title }}</h1>
+
+                <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="img-fluid mb-4">
+
+                <div class="project-meta">
+                    {{ with .Params.technologies }}
+                    <div class="technologies mb-4">
+                        <h4>Technologies:</h4>
+                        <p>{{ delimit . ", " }}</p>
+                    </div>
+                    {{ end }}
+
+                    {{ with .Params.link }}
+                    <a href="{{ . }}" class="btn btn-primary mb-4" target="_blank">
+                        View Project
+                    </a>
+                    {{ end }}
+                </div>
+
+                <div class="project-content">
+                    {{ .Content }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
