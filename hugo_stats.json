@@ -30,7 +30,6 @@
       "ol",
       "p",
       "picture",
-      "pre",
       "script",
       "section",
       "span",
@@ -99,7 +98,6 @@
       "footer__right",
       "four-o-four",
       "header",
-      "highlight",
       "home",
       "icon-arrow-right",
       "icon-cloud-arrow-down",
@@ -198,10 +196,8 @@
       "message",
       "meta",
       "navbarSupportedContent",
-      "performance-achievements",
       "projects",
       "technical-components",
-      "technical-implementation",
       "wordcount"
     ]
   }

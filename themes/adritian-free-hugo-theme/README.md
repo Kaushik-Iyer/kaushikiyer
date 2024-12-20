@@ -63,7 +63,7 @@ Note: the theme has **not** been migrated to Hugo Modules yet. To install it, yo
 - Clone the adritian-free-hugo-theme: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git themes/adritian-free-hugo-theme`.
 - Replace the `hugo.toml` file in the project's root directory with themes/adritian-free-hugo-theme/exampleSite/config.toml: `cp themes/adritian-free-hugo-theme/exampleSite/hugo.toml hugo.toml` (*executed from the website root folder*)
 - Start Hugo with `hugo server -D`
-- 🎉 The theme is alive on http://localhost:1313/
+- 🎉 The theme is alive on https://kaushik-iyer.com/
 
 _Optional:_
 if you want to preview the theme with the example content before deciding if it's what you are looking for, you can run the theme with the example content:
@@ -96,7 +96,7 @@ Built in 1788 ms
 Environment: "development"
 Serving pages from disk
 Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Web Server is available at https://kaushik-iyer.com/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 ```
 
