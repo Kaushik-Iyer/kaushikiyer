@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<!-- <head>
 	<link rel="stylesheet" href="{{ " css/project-detail.css" | relURL }}">
-</head>
+</head> -->
 
 <head>
 	<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
@@ -14,14 +14,12 @@
 	<meta name="theme-color" content="#478079" />
 
 	<title>Kaushik Iyer</title>
-	<meta name="description"
-		content='This hugo theme (Adritian) is based on Bootstrap and has features that make it suitable for a personal site, a portfolio or other kind of Single Page Applications.'>
-	<meta name="generator-mode" content='development'>
+	<meta name="description" content="Kaushik Iyer - Computer Science Masters Student at Cornell University">
+	<meta name="generator-mode" content="production">
 	<style data-generator="critical-css">
 	</style>
-	<link rel="stylesheet" href="http://localhost:1313/scss/menu.css" integrity="" crossorigin="anonymous" />
-	<link rel="stylesheet" href="http://localhost:1313/scss/bootstrap/bootstrap.css" integrity=""
-		crossorigin="anonymous" />
+	<link rel="stylesheet" href="scss/menu.css" integrity="" crossorigin="anonymous" />
+	<link rel="stylesheet" href="scss/bootstrap/bootstrap.css" integrity="" crossorigin="anonymous" />
 
 	<link rel="preload" href="/css/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
 	<noscript>
@@ -45,7 +43,7 @@
 		<div class="container rad-fade-in">
 			<nav class="navbar navbar-expand-lg navbar-light p-0">
 				<div class="container-fluid">
-					<a class="navbar-brand mx-auto" href="http://localhost:1313/">
+					<a class="navbar-brand mx-auto" href="{{ " /" | relURL }}">
 						<span>Kaushik</span>
 						<span>Iyer</span>
 					</a>
@@ -57,7 +55,7 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-lg-auto">
 							<li class="nav-item">
-								<a class="nav-link active" href="http://localhost:1313/">HOME</a>
+								<a class="nav-link" href="{{ " /" | relURL }}">HOME</a>
 							</li>
 
 							<li class="nav-item">
@@ -207,8 +205,8 @@
 						difference,
 						whether it's through optimizing system performance or creating tools that bring value to users.
 					</p>
-					<a href="https://www.linkedin.com/in/adrianmoreno/" target="_blank" class="btn btn-primary">
-						<i class="icon-user"></i>
+					<a href="https://www.linkedin.com/in/kaushik-iyer-8aa347216/" target="_blank"
+						class="btn btn-primary"> <i class="icon-user"></i>
 						About Me
 					</a>
 				</div>
@@ -515,7 +513,7 @@
 			</div>
 			<div class="footer__right">
 
-				<nav class="language-selector">
+				<!-- <nav class="language-selector">
 					<ul>
 
 
@@ -542,7 +540,7 @@
 							</ul>
 						</li>
 					</ul>
-				</nav>
+				</nav> -->
 
 			</div>
 		</div>
@@ -561,11 +559,11 @@
 			}
 		});
 	</script>
-	<script defer src='http://localhost:1313/js/rad-animations.js'></script>
-	<script defer src='http://localhost:1313/js/library/smooth-scroll.polyfills.min.js'></script>
-	<script defer src='http://localhost:1313/js/sticky-header.js'></script>
-	<script defer src='http://localhost:1313/js/smooth-scroll-init.js'></script>
-	<script defer src='http://localhost:1313/js/library/bootstrap.min.js'></script>
+	<script defer src="{{ " js/rad-animations.js" | relURL }}"></script>
+	<script defer src="{{ " js/library/smooth-scroll.polyfills.min.js" | relURL }}"></script>
+	<script defer src="{{ " js/sticky-header.js" | relURL }}"></script>
+	<script defer src="{{ " js/smooth-scroll-init.js" | relURL }}"></script>
+	<script defer src="{{ " js/library/bootstrap.min.js" | relURL }}"></script>
 
 
 
