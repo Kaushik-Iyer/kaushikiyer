@@ -11,7 +11,7 @@ showcase:
 
   button:
     icon: "icon-email"
-    URL: "https://kaushik-iyer.com/"
+    URL: "https://www.kaushik-iyer.com/"
 
   socialLinks:
     - icon: "linkedin"
@@ -51,16 +51,16 @@ showcase:
       URL: "https://www.threads.net/"
 
     - icon: "face-smile"
-      URL: "https://kaushik-iyer.com/"
+      URL: "https://www.kaushik-iyer.com/"
 
     - icon: "user"
-      URL: "https://kaushik-iyer.com/"
+      URL: "https://www.kaushik-iyer.com/"
 
     - icon: "quote-left"
-      URL: "https://kaushik-iyer.com/"
+      URL: "https://www.kaushik-iyer.com/"
 
     - icon: "cloud-arrow-down"
-      URL: "https://kaushik-iyer.com/"
+      URL: "https://www.kaushik-iyer.com/"
 # about
 about:
   enable: true

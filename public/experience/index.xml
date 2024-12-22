@@ -1,31 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Experiences on</title><link>https://kaushik-iyer.com/experience/</link><description>Recent content in Experiences on</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 01 Sep 2024 00:00:00 -0500</lastBuildDate><atom:link href="https://kaushik-iyer.com/experience/index.xml" rel="self" type="application/rss+xml"/><item><title>Document Conversion Assistant</title><link>https://kaushik-iyer.com/experience/cornell-sds/</link><pubDate>Sun, 01 Sep 2024 00:00:00 -0500</pubDate><guid>https://kaushik-iyer.com/experience/cornell-sds/</guid><description>&lt;h3 id="making-education-accessible-through-technology">Making Education Accessible Through Technology&lt;/h3>
-&lt;p>In my role at Cornell University, I work to bridge the gap between traditional educational materials and accessible formats, ensuring that all students have equal access to learning resources:&lt;/p>
-&lt;ul>
-&lt;li>Transform complex textbooks and academic materials into accessible formats using advanced document processing techniques&lt;/li>
-&lt;li>Utilize Microsoft Word&amp;rsquo;s advanced features to optimize document layouts, headers, footers, and references for various accessibility needs&lt;/li>
-&lt;li>Collaborate daily through Microsoft Teams to coordinate task assignments and ensure timely delivery of converted materials&lt;/li>
-&lt;li>Work closely with disability services to understand and implement specific accessibility requirements for different learning needs&lt;/li>
-&lt;li>Maintain detailed documentation of conversion processes and best practices&lt;/li>
-&lt;li>Participate in regular training sessions to stay updated with the latest accessibility standards and tools&lt;/li>
-&lt;/ul>
-&lt;p>This position has deepened my understanding of inclusive design principles and the critical role of technology in creating equitable educational experiences.&lt;/p></description></item><item><title>Skima.ai</title><link>https://kaushik-iyer.com/experience/skima/</link><pubDate>Thu, 01 Jun 2023 00:00:00 -0500</pubDate><guid>https://kaushik-iyer.com/experience/skima/</guid><description>&lt;h3 id="building-the-future-of-ai-powered-recruitment">Building the Future of AI-Powered Recruitment&lt;/h3>
-&lt;p>My journey at Skima.ai was transformative, working at the intersection of recruitment technology and artificial intelligence. As one of the early engineering interns at this ambitious startup, I had the opportunity to work on critical infrastructure and performance optimization that directly impacted our user experience.&lt;/p>
-&lt;p>I spearheaded several key initiatives that significantly improved our platform&amp;rsquo;s performance:&lt;/p>
-&lt;ul>
-&lt;li>Engineered a 70% improvement in query speed through sophisticated optimization of Ruby on Rails ActiveRecord with PostgreSQL, transforming our candidate listing pages from sluggish to near-instantaneous&lt;/li>
-&lt;li>Architected and implemented an asynchronous processing system using Sidekiq workers and cron jobs, dramatically improving system responsiveness for our recruitment partners&lt;/li>
-&lt;li>Led the migration of our critical workflow to AWS Lambda, achieving a 50% boost in processing speed and enabling real-time data-driven decision making&lt;/li>
-&lt;li>Integrated and fine-tuned multiple third-party APIs including Stripe for payments and Greenhouse for ATS integration&lt;/li>
-&lt;li>Developed robust web scraping solutions using Python and Selenium to expand our market analysis capabilities&lt;/li>
-&lt;li>Implemented advanced LLM prompt engineering using OpenAI&amp;rsquo;s Ruby gem, automating diverse data generation and enhancing our AI-powered features&lt;/li>
-&lt;/ul>
-&lt;p>Working in a fast-paced startup environment taught me invaluable lessons about rapid iteration, cross-functional collaboration, and the importance of building scalable solutions. Each feature release directly impacted our user acquisition and retention metrics, providing immediate feedback on our engineering decisions.&lt;/p></description></item><item><title>DeepCytes</title><link>https://kaushik-iyer.com/experience/deepcytes/</link><pubDate>Wed, 01 Jun 2022 00:00:00 -0500</pubDate><guid>https://kaushik-iyer.com/experience/deepcytes/</guid><description>&lt;h3 id="diving-into-digital-forensics-and-market-fraud-investigation">Diving into Digital Forensics and Market Fraud Investigation&lt;/h3>
-&lt;p>At DeepCytes, I immersed myself in the fascinating world of cybersecurity and financial fraud investigation. This internship provided me with hands-on experience in digital forensics and market analysis:&lt;/p>
-&lt;ul>
-&lt;li>Configured and deployed sophisticated forensic tools using Docker containers, ensuring consistent and reliable investigation environments&lt;/li>
-&lt;li>Participated in high-stakes investigations into stock market fraud, developing analytical skills and attention to detail&lt;/li>
-&lt;li>Collaborated with senior investigators to analyze complex financial data patterns and identify potential fraudulent activities&lt;/li>
-&lt;li>Gained practical experience with GitHub for version control and collaborative forensic tool development&lt;/li>
-&lt;li>Learned to work with sensitive financial data while maintaining strict confidentiality protocols&lt;/li>
-&lt;/ul>
-&lt;p>This experience gave me valuable insights into the intersection of technology and financial security, teaching me the importance of precision and thoroughness in security-critical applications.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Experiences on </title>
+    <link>http://localhost:1313/experience/</link>
+    <description>Recent content in Experiences on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 01 Sep 2024 00:00:00 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/experience/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Document Conversion Assistant</title>
+      <link>http://localhost:1313/experience/cornell-sds/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/experience/cornell-sds/</guid>
+      <description>&lt;h3 id=&#34;making-education-accessible-through-technology&#34;&gt;Making Education Accessible Through Technology&lt;/h3&gt;&#xA;&lt;p&gt;In my role at Cornell University, I work to bridge the gap between traditional educational materials and accessible formats, ensuring that all students have equal access to learning resources:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Transform complex textbooks and academic materials into accessible formats using advanced document processing techniques&lt;/li&gt;&#xA;&lt;li&gt;Utilize Microsoft Word&amp;rsquo;s advanced features to optimize document layouts, headers, footers, and references for various accessibility needs&lt;/li&gt;&#xA;&lt;li&gt;Collaborate daily through Microsoft Teams to coordinate task assignments and ensure timely delivery of converted materials&lt;/li&gt;&#xA;&lt;li&gt;Work closely with disability services to understand and implement specific accessibility requirements for different learning needs&lt;/li&gt;&#xA;&lt;li&gt;Maintain detailed documentation of conversion processes and best practices&lt;/li&gt;&#xA;&lt;li&gt;Participate in regular training sessions to stay updated with the latest accessibility standards and tools&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This position has deepened my understanding of inclusive design principles and the critical role of technology in creating equitable educational experiences.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Skima.ai</title>
+      <link>http://localhost:1313/experience/skima/</link>
+      <pubDate>Thu, 01 Jun 2023 00:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/experience/skima/</guid>
+      <description>&lt;h3 id=&#34;building-the-future-of-ai-powered-recruitment&#34;&gt;Building the Future of AI-Powered Recruitment&lt;/h3&gt;&#xA;&lt;p&gt;My journey at Skima.ai was transformative, working at the intersection of recruitment technology and artificial intelligence. As one of the early engineering interns at this ambitious startup, I had the opportunity to work on critical infrastructure and performance optimization that directly impacted our user experience.&lt;/p&gt;&#xA;&lt;p&gt;I spearheaded several key initiatives that significantly improved our platform&amp;rsquo;s performance:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Engineered a 70% improvement in query speed through sophisticated optimization of Ruby on Rails ActiveRecord with PostgreSQL, transforming our candidate listing pages from sluggish to near-instantaneous&lt;/li&gt;&#xA;&lt;li&gt;Architected and implemented an asynchronous processing system using Sidekiq workers and cron jobs, dramatically improving system responsiveness for our recruitment partners&lt;/li&gt;&#xA;&lt;li&gt;Led the migration of our critical workflow to AWS Lambda, achieving a 50% boost in processing speed and enabling real-time data-driven decision making&lt;/li&gt;&#xA;&lt;li&gt;Integrated and fine-tuned multiple third-party APIs including Stripe for payments and Greenhouse for ATS integration&lt;/li&gt;&#xA;&lt;li&gt;Developed robust web scraping solutions using Python and Selenium to expand our market analysis capabilities&lt;/li&gt;&#xA;&lt;li&gt;Implemented advanced LLM prompt engineering using OpenAI&amp;rsquo;s Ruby gem, automating diverse data generation and enhancing our AI-powered features&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Working in a fast-paced startup environment taught me invaluable lessons about rapid iteration, cross-functional collaboration, and the importance of building scalable solutions. Each feature release directly impacted our user acquisition and retention metrics, providing immediate feedback on our engineering decisions.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>DeepCytes</title>
+      <link>http://localhost:1313/experience/deepcytes/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/experience/deepcytes/</guid>
+      <description>&lt;h3 id=&#34;diving-into-digital-forensics-and-market-fraud-investigation&#34;&gt;Diving into Digital Forensics and Market Fraud Investigation&lt;/h3&gt;&#xA;&lt;p&gt;At DeepCytes, I immersed myself in the fascinating world of cybersecurity and financial fraud investigation. This internship provided me with hands-on experience in digital forensics and market analysis:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Configured and deployed sophisticated forensic tools using Docker containers, ensuring consistent and reliable investigation environments&lt;/li&gt;&#xA;&lt;li&gt;Participated in high-stakes investigations into stock market fraud, developing analytical skills and attention to detail&lt;/li&gt;&#xA;&lt;li&gt;Collaborated with senior investigators to analyze complex financial data patterns and identify potential fraudulent activities&lt;/li&gt;&#xA;&lt;li&gt;Gained practical experience with GitHub for version control and collaborative forensic tool development&lt;/li&gt;&#xA;&lt;li&gt;Learned to work with sensitive financial data while maintaining strict confidentiality protocols&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This experience gave me valuable insights into the intersection of technology and financial security, teaching me the importance of precision and thoroughness in security-critical applications.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
