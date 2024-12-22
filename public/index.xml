@@ -6,8 +6,15 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 01 Dec 2024 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 19 Dec 2024 14:38:33 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First blog entry here</title>
+      <link>http://localhost:1313/blog/first/</link>
+      <pubDate>Thu, 19 Dec 2024 14:38:33 +0200</pubDate>
+      <guid>http://localhost:1313/blog/first/</guid>
+      <description>&lt;p&gt;First blog entry here. I dont think I&amp;rsquo;m learned enough to actually write informative blogs, so this space might just look like tweets for now. Anyway, creating a portfolio website was something that I had been thinking of for months, and was the first thing I decided to do once my winter break started, and thankfully that did happen.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Soccer Drop In Statistics Logger</title>
       <link>http://localhost:1313/projects/soccer-drop-in-statistics-logger/</link>
@@ -35,13 +42,6 @@
       <pubDate>Sun, 01 Sep 2024 00:00:00 -0500</pubDate>
       <guid>http://localhost:1313/projects/greentech-registry-on-blockchain/</guid>
       <description>&lt;p&gt;I developed this project during my first semester at Cornell, as a part of my M.Eng Project for the Systems Engineering faculty. This project aims to solve some of the shortcomings of existing greentech technologies such as lack of verifiability and difficulty in tracking orders by leveraging the strengths of blockchain technology and its features of immutability, verifiability, and transparency.&lt;/p&gt;&#xA;&lt;p&gt;And since this was a part of an academic research paper as well, extensive efforts were put into performance testing of the platform, which included performing load testing under multiple simultaneous users calling computationally intensive functionalities such as create project, and upload images. These tests were performed under different request body sizes and multiple such calls. The test suites and visualizations were custom developed in Python, primarily using modules such as asyncio, locust, and matplotlib for concurrency, load test configurations, and visualizations respectively. These were custom made because Postman&amp;rsquo;s collection run functionality did not cater to this particular use case.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Sample blog content 2</title>
-      <link>http://localhost:1313/blog/first/</link>
-      <pubDate>Sun, 23 Jun 2024 14:38:33 +0200</pubDate>
-      <guid>http://localhost:1313/blog/first/</guid>
-      <description>&lt;p&gt;Sample blog content. Like a lorem ipsum but saying something more interesting.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;This is an unordered list sample 1&lt;/li&gt;&#xA;&lt;li&gt;This is an unordered list sample 2&#xA;&lt;ul&gt;&#xA;&lt;li&gt;This is an unordered indented list sample 1&lt;/li&gt;&#xA;&lt;li&gt;This is an unordered indented list sample 2&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;This is an ordered list sample 1&lt;/li&gt;&#xA;&lt;li&gt;This is an ordered list sample 2&#xA;&lt;ol&gt;&#xA;&lt;li&gt;This is an ordered indented list sample 1&lt;/li&gt;&#xA;&lt;li&gt;This is an ordered indented list sample 2&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Welcome to the world of &amp;ldquo;Content Ipsum,&amp;rdquo; the fresh alternative to the classic lorem ipsum. It&amp;rsquo;s the perfect blend for designers and writers who crave a dash of creativity and meaning in their placeholder text. Imagine a text that not only fills the space but also sparks the imagination, a text that weaves tales of innovation, inspiration, and the endless possibilities that creativity brings.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Replicated Key-Value Store with Paxos Consensus</title>

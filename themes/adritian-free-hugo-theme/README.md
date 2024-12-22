@@ -1,7 +1,7 @@
 # Adritian Free Hugo Theme
 ###### Adritian Hugo Theme for Personal Websites or Professional minimalistic landing pages
 
-See it live at **[adritian-demo.vercel.app](https://adritian-demo.vercel.app/)** (simple demo site, vanilla installation) or **[kaushik-iyer.com](https://www.kaushik-iyer.com)** (my personal site, running on this theme)
+See it live at **[adritian-demo.vercel.app](https://adritian-demo.vercel.app/)** (simple demo site, vanilla installation) or **[kaushik-iyer.com](https://kaushik-iyer.com)** (my personal site, running on this theme)
 
 This free Hugo theme is a fork of [Raditian Theme](https://github.com/radity/raditian-free-hugo-theme) - a great Hugo theme originally created by [Radity](https://github.com/radity). It's called __Adritian__ because I, the author, am called Adrián - and if you shuffle Raditian and Adrián letters you get... Adritian 😅
 
@@ -31,12 +31,12 @@ Also, the theme has been deployed and tested with Vercel. You can also find out 
 
 ## Live demo
 
-You can see it live at [www.kaushik-iyer.com](https://www.kaushik-iyer.com) (my personal website), as well as in this screenshot for reference:
+You can see it live at [kaushik-iyer.com](https://kaushik-iyer.com) (my personal website), as well as in this screenshot for reference:
 
 ![adrianmorenoinfo](https://user-images.githubusercontent.com/240085/230632835-74349170-d610-4731-8fac-62c413e6b3f5.png)
 
 You have two reference implementations of the theme:
-1. A full-featured site, [my personal website](https://www.kaushik-iyer.com) [in github too](https://github.com/zetxek/kaushik-iyer.com)
+1. A full-featured site, [my personal website](https://kaushik-iyer.com) [in github too](https://github.com/zetxek/kaushik-iyer.com)
 2. A simpler [demo site for the theme, adritian-demo](https://adritian-demo.vercel.app/) ([and its code](https://github.com/zetxek/adritian-demo)).
 
 ## Download
@@ -173,7 +173,7 @@ The experience is displayed in several locations:
 
 ## Troubleshooting
 
-This theme is a version of the one found on my website [kaushik-iyer.com](https://www.kaushik-iyer.com). If you run into trouble, [you can check the code on my website](https://github.com/zetxek/kaushik-iyer.com) for reference.
+This theme is a version of the one found on my website [kaushik-iyer.com](https://kaushik-iyer.com). If you run into trouble, [you can check the code on my website](https://github.com/zetxek/kaushik-iyer.com) for reference.
 
 If you have improvements for the theme, you are very welcome to make a PR if you are able 💕. Otherwise - see below for how to get help (and maybe help others with the same problem).
 
@@ -186,7 +186,7 @@ The project is offered "as is", and it's a hobby project that powers my personal
 Have you used the theme in your website? Send a PR to add it to the list for inspiration! (Extra points if the repo is open source :-)
 
 - [demo site](https://adritian.vercel.app)
-- [adrian moreno's personal site](https://www.kaushik-iyer.com)
+- [adrian moreno's personal site](https://kaushik-iyer.com)
 - https://davidcorto.es/ (https://github.com/dcorto/dcorto.github.io) *⭐ theme contributor*
 - https://cwb.dk/ (https://github.com/C0DK/C0DK.github.io)
 - https://shaun.gg/ (https://github.com/shauncampbell/shaun_dot_gg)
@@ -303,5 +303,5 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
 
 ## License
 
-- Copyright 2020 Radity (https://radity.com/), 2022 Adrián Moreno Peña (https://www.kaushik-iyer.com)
+- Copyright 2020 Radity (https://radity.com/), 2022 Adrián Moreno Peña (https://kaushik-iyer.com)
 - Licensed under MIT (https://github.com/zetxek/adritian-free-hugo-theme/blob/master/LICENSE)
