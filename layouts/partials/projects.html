@@ -9,7 +9,7 @@
                     {{ $i := 0 }}
                     {{ range $projects }}
                     {{ $modulus := mod $i 2 }}
-                    <div class="col-12 mb-4">
+                    <div class="col-12 mb-5">
                         <div class="project row align-items-center">
                             {{ if eq $modulus 0 }}
                             <div class="col-md-6">
@@ -51,6 +51,7 @@
                             </div>
                             {{ end }}
                         </div>
+                        <hr class="my-4">
                     </div>
                     {{ $i = add $i 1 }}
                     {{ end }}
