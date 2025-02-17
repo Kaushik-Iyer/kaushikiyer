@@ -29,6 +29,12 @@
                                     View on GitHub
                                 </a>
                                 {{ end }}
+                                {{ with .Params.demo }}
+                                <a href="{{ . }}" class="btn btn-success" target="_blank">
+                                    <i class="icon-external-link"></i>
+                                    Live Demo
+                                </a>
+                                {{ end }}
                             </div>
                             {{ else }}
                             <div class="col-md-6 order-md-2">
@@ -46,6 +52,12 @@
                                 <a href="{{ . }}" class="btn btn-primary" target="_blank">
                                     <i class="icon-square-github"></i>
                                     View on GitHub
+                                </a>
+                                {{ end }}
+                                {{ with .Params.demo }}
+                                <a href="{{ . }}" class="btn btn-success" target="_blank">
+                                    <i class="icon-external-link"></i>
+                                    Live Demo
                                 </a>
                                 {{ end }}
                             </div>
