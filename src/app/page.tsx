@@ -6,6 +6,7 @@ import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from "@portabletext/react";
+import TravelMap from "@/app/components/TravelMap"; // Import the TravelMap component
 
 // Interface definitions (can be moved to a types file later)
 interface Post extends SanityDocument {
@@ -235,9 +236,9 @@ export default async function HomePage() {
                     </div>
                   )}
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold group-hover:text-blue-700">{recentExperience.jobTitle}</h3>
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-blue-700">{recentExperience.jobTitle}</h3>
                     <p className="text-gray-700">{recentExperience.company}</p>
-                     <p className="text-sm text-gray-500">Ended: {new Date(recentExperience.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
+                    <p className="text-sm text-gray-500">Ended: {new Date(recentExperience.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
                   </div>
                 </div>
               </Link>
@@ -245,45 +246,55 @@ export default async function HomePage() {
           </section>
         )}
 
+        {/* Travel Map Section */}
+        <section>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold">Places I've Visited</h2>
+            {/* Optional: Add a link to a dedicated travel page if you plan to create one */}
+            {/* <Link href="/travel" className="text-blue-600 hover:text-blue-800 hover:underline">
+              Explore More &rarr;
+            </Link> */}
+          </div>
+          <div className="p-6 border border-gray-200 rounded-lg shadow-lg bg-white">
+            <TravelMap />
+          </div>
+        </section>
+
         {/* Testimonials Section */}
         {recentTestimonial && (
           <section>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold">Recent Testimonial</h2>
-              <Link href="/testimonials" className="text-blue-600 hover:text-blue-800 hover:underline">
+              <h2 className="text-2xl sm:text-3xl font-bold">What People Say</h2>
+              <Link href="/#testimonials" className="text-blue-600 hover:text-blue-800 hover:underline">
                 View All Testimonials &rarr;
               </Link>
             </div>
             <div className="p-6 border border-gray-200 rounded-lg shadow-lg bg-white">
               <Link href={`/testimonials/${recentTestimonial.slug.current}`} className="block group">
-                <div className="flex items-start space-x-4">
-                    {recentTestimonial.personImage && (
-                    <div className="flex-shrink-0 w-16 h-16 relative rounded-full overflow-hidden border border-gray-100">
-                        <Image
-                        src={urlFor(recentTestimonial.personImage).width(100).height(100).fit('crop').url()}
+                <div className="flex items-center space-x-4">
+                  {recentTestimonial.personImage && (
+                    <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-gray-100">
+                      <Image
+                        src={urlFor(recentTestimonial.personImage).width(100).height(100).url()}
                         alt={recentTestimonial.personName}
                         layout="fill"
                         objectFit="cover"
-                        />
+                      />
                     </div>
+                  )}
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-blue-700">{recentTestimonial.personName}</h3>
+                    {recentTestimonial.relation && (
+                      <p className="text-sm text-gray-500">{recentTestimonial.relation}</p>
                     )}
-                    <div className="flex-grow">
-                        <h3 className="text-xl font-semibold group-hover:text-blue-700">{recentTestimonial.personName}</h3>
-                        {recentTestimonial.relation && <p className="text-sm text-gray-600 mb-2">{recentTestimonial.relation}</p>}
-                        <div className="prose prose-sm max-w-none text-gray-700 line-clamp-3">
-                            <PortableText value={truncatePortableText(recentTestimonial.testimonialContent, 150)} />
-                        </div>
+                    <div className="prose prose-sm max-w-none text-gray-600 mt-2">
+                      <PortableText value={recentTestimonial.testimonialContent} />
                     </div>
+                  </div>
                 </div>
               </Link>
             </div>
           </section>
-        )}
-
-        {!recentPost && !recentProject && !recentEducation && !recentExperience && !recentTestimonial && (
-          <p className="text-center text-xl text-gray-500 py-12">
-            No content found. Start by adding some entries in the Sanity Studio!
-          </p>
         )}
       </div>
     </Layout>
