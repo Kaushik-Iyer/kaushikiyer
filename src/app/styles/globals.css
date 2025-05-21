@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss"; /* Re-add this line */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,42 +11,52 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* New rule to apply themed background and text to body */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  /* font-family is handled by inter.className in layout.tsx */
+}
+
 :root {
   --color-primary: #3b82f6; 
   --color-secondary: #1e40af;
   --color-accent: #e0f2fe;
-  --color-background: #ffffff; /* Blog post's light background */
-  --color-text: #1e293b; /* Blog post's light text */
+  --color-background: #ffffff; /* Default light background */
+  --color-text: #1e293b; /* Default light text */
 }
 
-.dark {
+.dark { /* Tailwind's darkMode: 'class' handles this */
   --color-primary: #1e293b;
   --color-secondary: #334155;
   --color-accent: #64748b;
-  --color-background: #0f172a; /* Blog post's dark background */
-  --color-text: #f1f5f9; /* Blog post's dark text */
+  --color-background: #0f172a; /* Dark background */
+  --color-text: #f1f5f9; /* Dark text */
 }
 
-.theme-blue {
+/* Custom theme definitions MOVED to the end of the file */
+/* Ensure these are the last major rule sets */
+
+html.theme-blue { 
   --color-primary: #3b82f6;
   --color-secondary: #1e40af;
   --color-accent: #e0f2fe;
-  --color-background: #eff6ff;
-  --color-text: #1e293b;
+  --color-background: #eff6ff; 
+  --color-text: #1e293b; 
 }
 
-.theme-green {
+html.theme-green { 
   --color-primary: #22c55e;
   --color-secondary: #166534;
   --color-accent: #bbf7d0;
-  --color-background: #f0fdf4;
-  --color-text: #14532d;
+  --color-background: #f0fdf4; 
+  --color-text: #14532d; 
 }
 
-.theme-red {
+html.theme-red { 
   --color-primary: #ef4444;
   --color-secondary: #7f1d1d;
   --color-accent: #fecaca;
-  --color-background: #fef2f2;
-  --color-text: #7f1d1d;
+  --color-background: #fef2f2; 
+  --color-text: #7f1d1d; 
 }
