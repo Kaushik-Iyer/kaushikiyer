@@ -29,11 +29,11 @@ export default async function ProjectsPage() {
 
   return (
     <Layout>
-      <h1 className="text-3xl sm:text-4xl font-bold mb-8">Projects</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-text">Projects</h1>
       {projects && projects.length > 0 ? (
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <li key={project._id} className="border border-black/10 rounded-lg overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+            <li key={project._id} className="border border-accent rounded-lg overflow-hidden group hover:shadow-lg transition-shadow duration-300 bg-background">
               <Link href={`/projects/${project.slug.current}`} className="block">
                 {project.mainImage && (
                   <div className="w-full h-48 relative overflow-hidden">
@@ -47,15 +47,15 @@ export default async function ProjectsPage() {
                   </div>
                 )}
                 <div className="p-4">
-                  <h2 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-blue-600 transition-colors duration-300">
+                  <h2 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-primary transition-colors duration-300 text-text">
                     {project.title}
                   </h2>
                   {project.description && (
-                    <p className="text-sm text-black/60 mb-2 line-clamp-3">
+                    <p className="text-sm text-text/70 mb-2 line-clamp-3">
                       {project.description}
                     </p>
                   )}
-                  <p className="text-xs text-black/50">
+                  <p className="text-xs text-text/60">
                     Published: {new Date(project.publishedAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
@@ -68,7 +68,7 @@ export default async function ProjectsPage() {
           ))}
         </ul>
       ) : (
-        <p>No projects found. Start by adding some in the Sanity Studio!</p>
+        <p className="text-text/70">No projects found. Start by adding some in the Sanity Studio!</p>
       )}
     </Layout>
   );

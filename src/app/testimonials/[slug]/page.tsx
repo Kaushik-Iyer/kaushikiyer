@@ -1,4 +1,3 @@
-\
 // /home/kaushik/portfolio/src/app/testimonials/[slug]/page.tsx
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/lib/client";
@@ -45,7 +44,7 @@ export default async function TestimonialPage({ params }: { params: { slug: stri
 
   return (
     <Layout>
-      <article className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-white shadow-xl rounded-lg mt-8 mb-8">
+      <article className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-background shadow-xl rounded-lg mt-8 mb-8 border border-accent"> {/* Changed bg-white to bg-background, added border-accent */}
         <div className="text-center mb-10">
           {testimonial.personImage && (
             <div className="mb-6 inline-block">
@@ -54,14 +53,14 @@ export default async function TestimonialPage({ params }: { params: { slug: stri
                 alt={testimonial.personName}
                 width={150}
                 height={150}
-                className="rounded-full shadow-lg border-4 border-gray-200"
+                className="rounded-full shadow-lg border-4 border-accent" // Changed border-gray-200 to border-accent
               />
             </div>
           )}
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">{testimonial.personName}</h1>
-          {testimonial.relation && <p className="text-xl text-gray-600 mt-2">{testimonial.relation}</p>}
+          <h1 className="text-4xl sm:text-5xl font-bold text-text">{testimonial.personName}</h1> {/* Changed text-gray-900 to text-text */}
+          {testimonial.relation && <p className="text-xl text-secondary mt-2">{testimonial.relation}</p>} {/* Changed text-gray-600 to text-secondary */}
           {testimonial.testimonialDate && (
-            <p className="text-md text-gray-500 mt-3">
+            <p className="text-md text-text/70 mt-3"> {/* Changed text-gray-500 to text-text/70 */}
               {new Date(testimonial.testimonialDate).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
@@ -72,7 +71,7 @@ export default async function TestimonialPage({ params }: { params: { slug: stri
         </div>
 
         {testimonial.testimonialContent && (
-          <div className="prose prose-lg sm:prose-xl max-w-none text-gray-800 leading-relaxed">
+          <div className="prose prose-lg sm:prose-xl max-w-none text-text leading-relaxed dark:prose-invert"> {/* Changed text-gray-800 to text-text, added dark:prose-invert for better dark mode prose */}
             <PortableText value={testimonial.testimonialContent} />
           </div>
         )}

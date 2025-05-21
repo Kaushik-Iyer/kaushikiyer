@@ -45,10 +45,10 @@ export default async function EducationItemPage({ params }: { params: { slug: st
 
   return (
     <Layout>
-      <article className="max-w-2xl mx-auto p-4 sm:p-6">
-        <div className="flex flex-col sm:flex-row items-center mb-8 pb-6 border-b border-black/10">
+      <article className="max-w-2xl mx-auto p-4 sm:p-6 bg-background text-text border border-accent rounded-lg shadow-xl my-8"> {/* Added bg-background, text-text, border, margin */}
+        <div className="flex flex-col sm:flex-row items-center mb-8 pb-6 border-b border-accent"> {/* Changed border-black/10 */}
           {item.institutionLogo && (
-            <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 relative rounded-lg overflow-hidden border border-black/10 shadow-sm mb-4 sm:mb-0 sm:mr-6">
+            <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 relative rounded-lg overflow-hidden border border-accent/50 shadow-sm mb-4 sm:mb-0 sm:mr-6"> {/* Changed border-black/10 */}
               <Image
                 src={urlFor(item.institutionLogo).width(200).height(200).url()}
                 alt={`${item.institution} logo`}
@@ -58,16 +58,16 @@ export default async function EducationItemPage({ params }: { params: { slug: st
             </div>
           )}
           <div className="text-center sm:text-left">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1">{item.degree}</h1>
-            <p className="text-lg sm:text-xl text-black/80 mb-1">{item.institution}</p>
-            <p className="text-md text-black/60">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 text-text">{item.degree}</h1> {/* Ensured text-text */}
+            <p className="text-lg sm:text-xl text-text/80 mb-1">{item.institution}</p> {/* Changed text-black/80 */}
+            <p className="text-md text-text/60"> {/* Changed text-black/60 */}
               {item.startDate.replace('-', '/')} – {item.endDate.replace('-', '/')}
             </p>
           </div>
         </div>
         
         {item.description && (
-          <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
+          <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none text-text dark:prose-invert"> {/* Added text-text, dark:prose-invert */}
             <PortableText value={item.description} />
           </div>
         )}

@@ -46,7 +46,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
   return (
     <Layout>
-      <article className="max-w-2xl mx-auto">
+      <article className="max-w-2xl mx-auto bg-background text-text p-6 rounded-lg shadow-xl border border-accent my-8"> {/* Added bg-background, text-text, border, padding, margin */}
         {project.mainImage && (
           <div className="mb-8 relative w-full h-64 sm:h-96 overflow-hidden rounded-lg shadow-lg">
             <Image
@@ -57,8 +57,8 @@ export default async function ProjectPage({ params }: { params: { slug: string }
             />
           </div>
         )}
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-center">{project.title}</h1>
-        <p className="text-sm text-black/60 mb-6 text-center">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-center text-text">{project.title}</h1> {/* Ensured text-text */}
+        <p className="text-sm text-text/70 mb-6 text-center"> {/* Changed text-black/60 */}
           Published on: {new Date(project.publishedAt).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -72,7 +72,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
               href={project.projectUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-300 text-lg"
+              className="inline-block bg-primary text-white py-2 px-6 rounded-lg hover:bg-primary/80 transition-colors duration-300 text-lg" // Changed bg-blue-600 to bg-primary
             >
               View Project
             </a>
@@ -80,7 +80,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         )}
 
         {project.description && (
-          <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none mb-8 text-center text-lg text-black/80">
+          <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none mb-8 text-center text-lg text-text/80 dark:prose-invert"> {/* Changed text-black/80, added dark:prose-invert */}
             {/* If description is simple text, wrap in <p>. If Portable Text, use <PortableText> */}
             <p>{project.description}</p>
             {/* Example for Portable Text description: <PortableText value={project.description} /> */}
@@ -89,17 +89,17 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         
         {/* If you add a 'body' field (Portable Text) to your project schema for more detailed content */}
         {project.body && (
-          <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none">
+          <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none dark:prose-invert text-text"> {/* Added dark:prose-invert, text-text */}
             <PortableText value={project.body} />
           </div>
         )}
 
         {project.tags && project.tags.length > 0 && (
-          <div className="mt-8 pt-4 border-t border-black/10">
-            <h3 className="text-lg font-semibold mb-2">Technologies Used:</h3>
+          <div className="mt-8 pt-4 border-t border-accent"> {/* Changed border-black/10 */}
+            <h3 className="text-lg font-semibold mb-2 text-text">Technologies Used:</h3> {/* Ensured text-text */}
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
-                <span key={tag} className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">
+                <span key={tag} className="bg-accent text-secondary px-3 py-1 rounded-full text-sm"> {/* Changed bg-gray-200 text-gray-700 */}
                   {tag}
                 </span>
               ))}

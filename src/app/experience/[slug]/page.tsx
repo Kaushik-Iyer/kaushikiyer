@@ -47,10 +47,10 @@ export default async function ExperienceItemPage({ params }: { params: { slug: s
 
   return (
     <Layout>
-      <article className="max-w-3xl mx-auto p-4 sm:p-6">
-        <div className="flex flex-col sm:flex-row items-center mb-8 pb-6 border-b border-black/10">
+      <article className="max-w-3xl mx-auto p-4 sm:p-6 bg-background text-text border border-accent rounded-lg shadow-xl my-8"> {/* Added bg-background, text-text, border, margin */}
+        <div className="flex flex-col sm:flex-row items-center mb-8 pb-6 border-b border-accent"> {/* Changed border-black/10 */}
           {item.companyLogo && (
-            <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 relative rounded-lg overflow-hidden border border-black/10 shadow-sm mb-4 sm:mb-0 sm:mr-6">
+            <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 relative rounded-lg overflow-hidden border border-accent/50 shadow-sm mb-4 sm:mb-0 sm:mr-6"> {/* Changed border-black/10 */}
               <Image
                 src={urlFor(item.companyLogo).width(200).height(200).fit('contain').url()}
                 alt={`${item.company} logo`}
@@ -60,29 +60,29 @@ export default async function ExperienceItemPage({ params }: { params: { slug: s
             </div>
           )}
           <div className="text-center sm:text-left">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1">{item.jobTitle}</h1>
-            <p className="text-lg sm:text-xl text-black/80 mb-1">
-              {item.company} {item.location && <span className="text-base text-black/60">({item.location})</span>}
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 text-text">{item.jobTitle}</h1> {/* Ensured text-text */}
+            <p className="text-lg sm:text-xl text-text/80 mb-1"> {/* Changed text-black/80 */}
+              {item.company} {item.location && <span className="text-base text-text/60">({item.location})</span>} {/* Changed text-black/60 */}
             </p>
-            <p className="text-md text-black/60">
+            <p className="text-md text-text/60"> {/* Changed text-black/60 */}
               {item.startDate.replace('-', '/')} – {item.endDate.replace('-', '/')}
             </p>
           </div>
         </div>
         
         {item.description && (
-          <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mb-8">
-            <h2 class="text-xl font-semibold mb-3">Responsibilities & Achievements:</h2>
+          <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mb-8 text-text dark:prose-invert"> {/* Added text-text, dark:prose-invert */}
+            <h2 className="text-xl font-semibold mb-3 text-text">Responsibilities & Achievements:</h2> {/* Ensured text-text for prose heading */}
             <PortableText value={item.description} />
           </div>
         )}
 
         {item.tags && item.tags.length > 0 && (
-          <div className="mt-8 pt-4 border-t border-black/10">
-            <h3 className="text-lg font-semibold mb-2">Skills/Technologies Used:</h3>
+          <div className="mt-8 pt-4 border-t border-accent"> {/* Changed border-black/10 */}
+            <h3 className="text-lg font-semibold mb-2 text-text">Skills/Technologies Used:</h3> {/* Ensured text-text */}
             <div className="flex flex-wrap gap-2">
-              {item.tags.map((tag) => (
-                <span key={tag} className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">
+              {project.tags.map((tag) => (
+                <span key={tag} className="bg-accent text-secondary px-3 py-1 rounded-full text-sm"> {/* Changed bg-gray-200 text-gray-700 */}
                   {tag}
                 </span>
               ))}

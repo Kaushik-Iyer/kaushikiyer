@@ -38,17 +38,17 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-8 mt-12 border-t border-black/10 bg-gray-50">
+    <footer className="py-8 mt-12 border-t border-primary/10 bg-background text-text"> {/* Changed bg-gray-50 to bg-background, text-text, border-primary/10 */}
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Me Section */}
-          <div className="p-4 border border-gray-200 rounded-lg shadow-sm bg-white">
-            <h3 className="text-lg font-semibold mb-3 text-gray-800">Contact Me</h3>
+          <div className="p-4 border border-accent rounded-lg shadow-sm bg-background"> {/* Changed border-gray-200 to border-accent, bg-white to bg-background */}
+            <h3 className="text-lg font-semibold mb-3 text-text">Contact Me</h3> {/* Changed text-gray-800 to text-text */}
             <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4">
               <a 
                 href="https://www.linkedin.com/in/kaushik-iyer-8aa347216/" 
-                className="text-indigo-600 hover:text-indigo-800 hover:underline"
+                className="text-primary hover:text-primary/80 hover:underline" // Changed text-indigo-600 to text-primary
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -56,7 +56,7 @@ const Footer = () => {
               </a>
               <a 
                 href="https://github.com/Kaushik-Iyer" 
-                className="text-indigo-600 hover:text-indigo-800 hover:underline"
+                className="text-primary hover:text-primary/80 hover:underline" // Changed text-indigo-600 to text-primary
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -64,7 +64,7 @@ const Footer = () => {
               </a>
               <a 
                 href="https://x.com/kaushikiyer_" 
-                className="text-indigo-600 hover:text-indigo-800 hover:underline"
+                className="text-primary hover:text-primary/80 hover:underline" // Changed text-indigo-600 to text-primary
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -74,8 +74,8 @@ const Footer = () => {
           </div>
 
           {/* Suggestions Section */}
-          <div className="p-4 border border-gray-200 rounded-lg shadow-sm bg-white">
-            <h3 className="text-lg font-semibold mb-3 text-gray-800">Have a Suggestion?</h3>
+          <div className="p-4 border border-accent rounded-lg shadow-sm bg-background"> {/* Changed border-gray-200 to border-accent, bg-white to bg-background */}
+            <h3 className="text-lg font-semibold mb-3 text-text">Have a Suggestion?</h3> {/* Changed text-gray-800 to text-text */}
             <form onSubmit={handleSuggestionSubmit} className="space-y-3">
               <div>
                 <label htmlFor="footer-suggestion" className="sr-only">
@@ -85,7 +85,7 @@ const Footer = () => {
                   id="footer-suggestion"
                   name="suggestion"
                   rows={2}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-700"
+                  className="mt-1 block w-full px-3 py-2 border border-accent rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-background text-text" // Adjusted border, bg, text
                   value={suggestion}
                   onChange={(e) => setSuggestion(e.target.value)}
                   placeholder="Any travel spots or feedback?"
@@ -95,8 +95,7 @@ const Footer = () => {
               <div>
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-                  disabled={isSubmitting}
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50" // Changed text-white, bg-indigo-600 to bg-primary
                 >
                   {isSubmitting ? 'Submitting...' : 'Send Suggestion'}
                 </button>
@@ -110,7 +109,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="text-center text-sm text-black/60 pt-8">
+        <div className="text-center text-sm text-text/60 pt-8"> {/* Changed text-black/60 to text-text/60 */}
           <p>© {currentYear} Kaushik Iyer. All rights reserved.</p>
         </div>
       </div>

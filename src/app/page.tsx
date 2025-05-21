@@ -1,19 +1,19 @@
 // src/app/page.tsx
 import Link from "next/link";
 import { type SanityDocument } from "next-sanity";
-import { client } from "@/sanity/lib/client"; // Uses the alias for src/sanity/lib/client.ts
+import { client } from "@/sanity/lib/client"; 
 import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from "@portabletext/react";
-import TravelMap from "@/app/components/TravelMap"; // Import the TravelMap component
+import TravelMap from "@/app/components/TravelMap"; 
 
 // Interface definitions (can be moved to a types file later)
 interface Post extends SanityDocument {
   title: string;
   slug: { current: string };
   publishedAt: string;
-  body?: any[]; // For a short excerpt
+  body?: any[]; 
 }
 
 interface Project extends SanityDocument {
@@ -126,20 +126,20 @@ export default async function HomePage() {
         {recentPost && (
           <section>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold">Latest Blog Post</h2>
-              <Link href="/#blog" className="text-blue-600 hover:text-blue-800 hover:underline">
+              <h2 className="text-2xl sm:text-3xl font-bold text-text">Latest Blog Post</h2>
+              <Link href="/#blog" className="text-primary hover:text-primary/80 hover:underline">
                 View All Posts &rarr;
               </Link>
             </div>
-            <div className="p-6 border border-gray-200 rounded-lg shadow-lg bg-white">
+            <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
               <Link href={`/${recentPost.slug.current}`} className="block group">
-                <h3 className="text-xl sm:text-2xl font-semibold mb-2 group-hover:text-blue-700">{recentPost.title}</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold mb-2 group-hover:text-primary text-text">{recentPost.title}</h3>
                 {recentPost.body && (
-                  <div className="prose prose-sm max-w-none text-gray-600 line-clamp-3 mb-3">
+                  <div className="prose prose-sm max-w-none text-text/70 line-clamp-3 mb-3 dark:prose-invert">
                      <PortableText value={truncatePortableText(recentPost.body, 150)} />
                   </div>
                 )}
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-text/60">
                   {new Date(recentPost.publishedAt).toLocaleDateString('en-US', {
                     year: 'numeric', month: 'long', day: 'numeric',
                   })}
@@ -153,12 +153,12 @@ export default async function HomePage() {
         {recentProject && (
           <section>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold">Latest Project</h2>
-              <Link href="/projects" className="text-blue-600 hover:text-blue-800 hover:underline">
+              <h2 className="text-2xl sm:text-3xl font-bold text-text">Latest Project</h2>
+              <Link href="/projects" className="text-primary hover:text-primary/80 hover:underline">
                 View All Projects &rarr;
               </Link>
             </div>
-            <div className="p-6 border border-gray-200 rounded-lg shadow-lg bg-white">
+            <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
               <Link href={`/projects/${recentProject.slug.current}`} className="block group">
                 {recentProject.mainImage && (
                   <div className="w-full h-48 relative overflow-hidden rounded-md mb-4">
@@ -171,9 +171,9 @@ export default async function HomePage() {
                     />
                   </div>
                 )}
-                <h3 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-blue-700">{recentProject.title}</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-primary text-text">{recentProject.title}</h3>
                 {recentProject.description && (
-                  <p className="text-gray-600 line-clamp-2">{recentProject.description}</p>
+                  <p className="text-text/70 line-clamp-2">{recentProject.description}</p>
                 )}
               </Link>
             </div>
@@ -184,16 +184,16 @@ export default async function HomePage() {
         {recentEducation && (
           <section>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold">Recent Education</h2>
-              <Link href="/education" className="text-blue-600 hover:text-blue-800 hover:underline">
+              <h2 className="text-2xl sm:text-3xl font-bold text-text">Recent Education</h2>
+              <Link href="/education" className="text-primary hover:text-primary/80 hover:underline">
                 View All Education &rarr;
               </Link>
             </div>
-            <div className="p-6 border border-gray-200 rounded-lg shadow-lg bg-white">
+            <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
               <Link href={`/education/${recentEducation.slug.current}`} className="block group">
                 <div className="flex items-center space-x-4">
                   {recentEducation.institutionLogo && (
-                    <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-gray-100">
+                    <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-accent/50">
                       <Image
                         src={urlFor(recentEducation.institutionLogo).width(100).height(100).url()}
                         alt={`${recentEducation.institution} logo`}
@@ -203,9 +203,9 @@ export default async function HomePage() {
                     </div>
                   )}
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold group-hover:text-blue-700">{recentEducation.degree}</h3>
-                    <p className="text-gray-700">{recentEducation.institution}</p>
-                    <p className="text-sm text-gray-500">Ended: {new Date(recentEducation.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
+                    <h3 className="text-xl sm:text-2xl font-semibold group-hover:text-primary text-text">{recentEducation.degree}</h3>
+                    <p className="text-text/80">{recentEducation.institution}</p>
+                    <p className="text-sm text-text/60">Ended: {new Date(recentEducation.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
                   </div>
                 </div>
               </Link>
@@ -217,16 +217,16 @@ export default async function HomePage() {
         {recentExperience && (
           <section>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold">Recent Experience</h2>
-              <Link href="/experience" className="text-blue-600 hover:text-blue-800 hover:underline">
+              <h2 className="text-2xl sm:text-3xl font-bold text-text">Recent Experience</h2>
+              <Link href="/experience" className="text-primary hover:text-primary/80 hover:underline">
                 View All Experience &rarr;
               </Link>
             </div>
-            <div className="p-6 border border-gray-200 rounded-lg shadow-lg bg-white">
+            <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
               <Link href={`/experience/${recentExperience.slug.current}`} className="block group">
                 <div className="flex items-center space-x-4">
                   {recentExperience.companyLogo && (
-                    <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-gray-100">
+                    <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-accent/50">
                       <Image
                         src={urlFor(recentExperience.companyLogo).width(100).height(100).url()}
                         alt={`${recentExperience.company} logo`}
@@ -236,9 +236,9 @@ export default async function HomePage() {
                     </div>
                   )}
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-blue-700">{recentExperience.jobTitle}</h3>
-                    <p className="text-gray-700">{recentExperience.company}</p>
-                    <p className="text-sm text-gray-500">Ended: {new Date(recentExperience.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-primary text-text">{recentExperience.jobTitle}</h3>
+                    <p className="text-text/80">{recentExperience.company}</p>
+                    <p className="text-sm text-text/60">Ended: {new Date(recentExperience.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
                   </div>
                 </div>
               </Link>
@@ -249,13 +249,9 @@ export default async function HomePage() {
         {/* Travel Map Section */}
         <section>
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl sm:text-3xl font-bold">Places I've Visited</h2>
-            {/* Optional: Add a link to a dedicated travel page if you plan to create one */}
-            {/* <Link href="/travel" className="text-blue-600 hover:text-blue-800 hover:underline">
-              Explore More &rarr;
-            </Link> */}
+            <h2 className="text-2xl sm:text-3xl font-bold text-text">Places I've Visited</h2>
           </div>
-          <div className="p-6 border border-gray-200 rounded-lg shadow-lg bg-white">
+          <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
             <TravelMap />
           </div>
         </section>
@@ -264,16 +260,16 @@ export default async function HomePage() {
         {recentTestimonial && (
           <section>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold">What People Say</h2>
-              <Link href="/#testimonials" className="text-blue-600 hover:text-blue-800 hover:underline">
+              <h2 className="text-2xl sm:text-3xl font-bold text-text">What People Say</h2>
+              <Link href="/#testimonials" className="text-primary hover:text-primary/80 hover:underline">
                 View All Testimonials &rarr;
               </Link>
             </div>
-            <div className="p-6 border border-gray-200 rounded-lg shadow-lg bg-white">
+            <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
               <Link href={`/testimonials/${recentTestimonial.slug.current}`} className="block group">
                 <div className="flex items-center space-x-4">
                   {recentTestimonial.personImage && (
-                    <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-gray-100">
+                    <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-accent/50">
                       <Image
                         src={urlFor(recentTestimonial.personImage).width(100).height(100).url()}
                         alt={recentTestimonial.personName}
@@ -283,11 +279,11 @@ export default async function HomePage() {
                     </div>
                   )}
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-blue-700">{recentTestimonial.personName}</h3>
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-1 group-hover:text-primary text-text">{recentTestimonial.personName}</h3>
                     {recentTestimonial.relation && (
-                      <p className="text-sm text-gray-500">{recentTestimonial.relation}</p>
+                      <p className="text-sm text-text/60">{recentTestimonial.relation}</p>
                     )}
-                    <div className="prose prose-sm max-w-none text-gray-600 mt-2">
+                    <div className="prose prose-sm max-w-none text-text/70 mt-2 dark:prose-invert">
                       <PortableText value={recentTestimonial.testimonialContent} />
                     </div>
                   </div>

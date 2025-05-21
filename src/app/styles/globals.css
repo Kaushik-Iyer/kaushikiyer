@@ -1,26 +1,52 @@
 @import "tailwindcss";
-:root {
---background: 
-#ffffff;
---foreground: 
-#171717;
-}
-@theme inline {
- --color-background: var(--background);
- --color-foreground: var(--foreground);
- --font-sans: var(--font-geist-sans);
- --font-mono: var(--font-geist-mono);
-}
-@media (prefers-color-scheme: dark) {
-:root {
---background: 
-#0a0a0a;
---foreground: 
-#ededed;
- }
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
 body {
-background: var(--background);
-color: var(--foreground);
-font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --color-primary: #3b82f6; 
+  --color-secondary: #1e40af;
+  --color-accent: #e0f2fe;
+  --color-background: #ffffff; /* Blog post's light background */
+  --color-text: #1e293b; /* Blog post's light text */
+}
+
+.dark {
+  --color-primary: #1e293b;
+  --color-secondary: #334155;
+  --color-accent: #64748b;
+  --color-background: #0f172a; /* Blog post's dark background */
+  --color-text: #f1f5f9; /* Blog post's dark text */
+}
+
+.theme-blue {
+  --color-primary: #3b82f6;
+  --color-secondary: #1e40af;
+  --color-accent: #e0f2fe;
+  --color-background: #eff6ff;
+  --color-text: #1e293b;
+}
+
+.theme-green {
+  --color-primary: #22c55e;
+  --color-secondary: #166534;
+  --color-accent: #bbf7d0;
+  --color-background: #f0fdf4;
+  --color-text: #14532d;
+}
+
+.theme-red {
+  --color-primary: #ef4444;
+  --color-secondary: #7f1d1d;
+  --color-accent: #fecaca;
+  --color-background: #fef2f2;
+  --color-text: #7f1d1d;
 }

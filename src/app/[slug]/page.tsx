@@ -42,9 +42,9 @@ export default async function PostPage({ params }: { params: { slug: string } })
 
   return (
     <Layout>
-      <article>
-        <h1 className="text-3xl sm:text-4xl font-bold mb-4">{post.title}</h1>
-        <p className="text-sm text-black/60 mb-8">
+      <article className="bg-background text-text p-6 rounded-lg shadow-xl border border-accent my-8"> {/* Added theme classes */}
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-text">{post.title}</h1> {/* Ensured text-text */}
+        <p className="text-sm text-text/70 mb-8"> {/* Changed text-black/60 */}
           Published on: {new Date(post.publishedAt).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -52,7 +52,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
           })}
         </p>
         {post.body && (
-          <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none">
+          <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none text-text dark:prose-invert"> {/* Added text-text, dark:prose-invert */}
             <PortableText value={post.body} />
           </div>
         )}
