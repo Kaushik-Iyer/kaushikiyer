@@ -10,13 +10,19 @@ const Header = () => {
         <nav>
           <ul className="flex space-x-4 sm:space-x-6 text-sm sm:text-base">
             <li>
-              <Link href="/">Blog</Link> {/* Assuming homepage is blog for now */}
+              <Link href="/">Blog</Link>
             </li>
             <li>
-              <Link href="/projects">Projects</Link> {/* Placeholder */}
+              <Link href="/projects">Projects</Link>
             </li>
             <li>
-              <Link href="/travel">Travel</Link> {/* Placeholder */}
+              <Link href="/education">Education</Link>
+            </li>
+            <li>
+              <Link href="/experience">Experience</Link>
+            </li>
+            <li>
+              <Link href="/testimonials">Testimonials</Link>
             </li>
           </ul>
         </nav>

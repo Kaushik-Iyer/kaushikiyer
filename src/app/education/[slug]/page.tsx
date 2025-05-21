@@ -1,0 +1,77 @@
+// src/app/education/[slug]/page.tsx
+import { type SanityDocument } from "next-sanity";
+import { client } from "@/sanity/lib/client";
+import Layout from "@/app/components/layout/Layout";
+import { PortableText } from "@portabletext/react";
+import { notFound } from 'next/navigation';
+import Image from 'next/image';
+import { urlFor } from '@/sanity/lib/image';
+
+interface EducationItem extends SanityDocument {
+  degree: string;
+  institution: string;
+  slug: { current: string };
+  startDate: string;
+  endDate: string;
+  institutionLogo?: any;
+  description?: any[];
+}
+
+const SINGLE_EDUCATION_QUERY = `*[_type == "education" && slug.current == $slug][0]{
+  _id, degree, institution, slug, startDate, endDate, institutionLogo, description
+}`;
+
+export async function generateStaticParams() {
+  const items = await client.fetch<{ slug: string }[]>( 
+    `*[_type == "education" && defined(slug.current)]{ "slug": slug.current }`
+  );
+  return items.map((item) => ({
+    slug: item.slug,
+  }));
+}
+
+const revalidateOptions = { next: { revalidate: 60 } };
+
+export default async function EducationItemPage({ params }: { params: { slug: string } }) {
+  const item = await client.fetch<EducationItem>(
+    SINGLE_EDUCATION_QUERY,
+    { slug: params.slug },
+    revalidateOptions
+  );
+
+  if (!item) {
+    notFound();
+  }
+
+  return (
+    <Layout>
+      <article className="max-w-2xl mx-auto p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row items-center mb-8 pb-6 border-b border-black/10">
+          {item.institutionLogo && (
+            <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 relative rounded-lg overflow-hidden border border-black/10 shadow-sm mb-4 sm:mb-0 sm:mr-6">
+              <Image
+                src={urlFor(item.institutionLogo).width(200).height(200).url()}
+                alt={`${item.institution} logo`}
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+          )}
+          <div className="text-center sm:text-left">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1">{item.degree}</h1>
+            <p className="text-lg sm:text-xl text-black/80 mb-1">{item.institution}</p>
+            <p className="text-md text-black/60">
+              {item.startDate.replace('-', '/')} – {item.endDate.replace('-', '/')}
+            </p>
+          </div>
+        </div>
+        
+        {item.description && (
+          <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
+            <PortableText value={item.description} />
+          </div>
+        )}
+      </article>
+    </Layout>
+  );
+}
