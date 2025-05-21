@@ -10,7 +10,7 @@ const Header = () => {
         <nav>
           <ul className="flex space-x-4 sm:space-x-6 text-sm sm:text-base">
             <li>
-              <Link href="/">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </li>
             <li>
               <Link href="/projects">Projects</Link>

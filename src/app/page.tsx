@@ -127,7 +127,7 @@ export default async function HomePage() {
           <section>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl sm:text-3xl font-bold text-text">Latest Blog Post</h2>
-              <Link href="/#blog" className="text-primary hover:text-primary/80 hover:underline">
+              <Link href="/blog" className="text-primary hover:text-primary/80 hover:underline"> {/* Updated href to /blog */}
                 View All Posts &rarr;
               </Link>
             </div>
