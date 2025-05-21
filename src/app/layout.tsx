@@ -22,7 +22,7 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          themes={["light", "dark", "theme-blue", "theme-green", "theme-red"]} 
+          themes={["light", "dark", "theme-blue", "theme-green", "theme-red", "theme-neon"]} 
           storageKey="portfolio-theme" 
           enableSystem={false} 
         >

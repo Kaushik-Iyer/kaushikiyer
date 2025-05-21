@@ -11,9 +11,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* New rule to apply themed background and text to body */
+/* General rule to apply themed background and text to body */
 body {
-  background-color: var(--color-background);
+  background: var(--color-background); /* This sets color AND resets image, position etc. */
   color: var(--color-text);
   /* font-family is handled by inter.className in layout.tsx */
 }
@@ -59,4 +59,12 @@ html.theme-red {
   --color-accent: #fecaca;
   --color-background: #fef2f2; 
   --color-text: #7f1d1d; 
+}
+
+html.theme-neon { /* Neon Glow Theme */
+  --color-primary: #39ff14;   /* Neon Green */
+  --color-secondary: #ff1493; /* Deep Pink / Neon Pink */
+  --color-accent: #00ffff;    /* Aqua / Cyan */
+  --color-background: #101010; /* Very Dark Gray/Black */
+  --color-text: #39ff14;      /* Light Gray / White */
 }

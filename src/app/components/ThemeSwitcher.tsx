@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 // Ensure this array exactly matches the `themes` prop in ThemeProvider and your CSS class names
-const themes = ["light", "dark", "theme-blue", "theme-green", "theme-red"];
+const themes = ["light", "dark", "theme-blue", "theme-green", "theme-red", "theme-neon"];
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
