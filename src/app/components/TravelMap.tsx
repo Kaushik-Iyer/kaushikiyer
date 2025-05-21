@@ -24,9 +24,6 @@ const VISITED_PLACES_QUERY = `*[_type == "visitedPlace" && defined(countryCode)]
 const defaultCenter: LatLngExpression = [20, 0]; // Centered more globally
 const defaultZoom = 2;
 
-// GeoJSON URL for country boundaries
-// const geoJsonUrl = 'https://geojson-maps.ash.ms/countries-110m.json'; // Using a known reliable source
-// const geoJsonUrl = '/countries-110m.geojson'; // Using local copy
 const geoJsonUrl = '/custom.geo.json'; // Using local custom GeoJSON
 
 const TravelMap: React.FC = () => {
