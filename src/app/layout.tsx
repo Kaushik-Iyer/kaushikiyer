@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./styles/globals.css"; // Correct path relative to this file
 import { ThemeProvider } from "next-themes";
-import ThemeSwitcher from "@/app/components/ThemeSwitcher"; 
+import ThemeSwitcher from "@/app/components/ThemeSwitcher";
+import GoogleAnalytics from "@/app/components/GoogleAnalytics"; 
 
 const inter = Inter({ subsets: ["latin"], display: 'swap' });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className}`}> 
+        <GoogleAnalytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -27,7 +29,7 @@ export default function RootLayout({
           enableSystem={false} 
         >
           <div className="min-h-screen flex flex-col">
-            <ThemeSwitcher /> 
+            {/* <ThemeSwitcher />  */}
             <main className="flex-grow">{children}</main>
           </div>
         </ThemeProvider>

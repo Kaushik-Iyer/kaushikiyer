@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from "@portabletext/react";
 import TravelMap from "@/app/components/TravelMap"; 
+import FPLScoreCard from "@/app/components/FPLScoreCard"; // Added import
 
 // Interface definitions (can be moved to a types file later)
 interface Post extends SanityDocument {
@@ -117,10 +118,32 @@ export default async function HomePage() {
     client.fetch<ExperienceItem | null>(RECENT_EXPERIENCE_QUERY, {}, revalidateOptions),
     client.fetch<Testimonial | null>(RECENT_TESTIMONIAL_QUERY, {}, revalidateOptions),
   ]);
+  const fplManagerId = 154063; // User's FPL Manager ID
 
   return (
     <Layout>
       <div className="space-y-16 py-12">
+
+        <section className="mb-12">
+          <h1 className="text-4xl font-bold mb-4 text-text">Hello, I’m Kaushik Iyer.</h1>
+          <p className="text-lg mb-2 text-text/90">CS Masters @ Cornell</p>
+          <p className="text-lg mb-4 text-text/80">
+            I'm Kaushik Iyer, a Computer Science Masters student at Cornell University. Originally from Mumbai, I'm currently based in Ithaca, NY. I'm always eager to take on new challenges and contribute to innovative projects in the tech world.
+          </p>
+          <h2 className="text-3xl font-bold mb-3 text-text">Who am I?</h2>
+          <p className="text-lg text-text/80">
+            I'm a software developer with a passion for backend and product development. When I'm not coding, you'll find me watching soccer, exploring new cuisines, reading books, or exploring the beautiful gorges of Ithaca. I believe in building technology that makes a difference, whether it's through optimizing system performance or creating tools that bring value to users.
+          </p>
+        </section>
+
+        {/* FPL Scorecard Section */}
+        <section>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-text">My FPL Team Status</h2>
+            {/* Optional: Add a link to official FPL site or manager's page */}
+          </div>
+          <FPLScoreCard managerId={fplManagerId} />
+        </section>
 
         {/* Blog Section */}
         {recentPost && (
