@@ -7,12 +7,41 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from "@portabletext/react"; 
 
+// Define Sanity image type
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+
+// Define PortableText block types
+interface PortableTextSpan {
+  _type: 'span';
+  text: string;
+  marks?: string[];
+}
+
+interface PortableTextBlock {
+  _type: 'block';
+  _key: string;
+  children: PortableTextSpan[];
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+  markDefs?: Array<{
+    _key: string;
+    _type: string;
+    href?: string;
+  }>;
+}
+
 interface Testimonial extends SanityDocument {
   personName: string;
   relation?: string;
-  testimonialContent: any[]; 
+  testimonialContent: PortableTextBlock[];
   slug: { current: string };
-  personImage?: any;
+  personImage?: SanityImage;
   testimonialDate?: string;
 }
 
@@ -22,18 +51,18 @@ const TESTIMONIALS_QUERY = `*[_type == "testimonial"]|order(testimonialDate desc
 
 const revalidateOptions = { next: { revalidate: 60 } };
 
-const truncatePortableText = (blocks: any[], maxLength: number) => {
-  if (!blocks || !Array.isArray(blocks)) return '';
+const truncatePortableText = (blocks: PortableTextBlock[] = [], maxLength: number): PortableTextBlock[] => {
+  if (!blocks || !Array.isArray(blocks)) return [];
   let currentLength = 0;
-  const truncatedBlocks = [];
+  const truncatedBlocks: PortableTextBlock[] = [];
   for (const block of blocks) {
     if (block._type === 'block' && block.children) {
-      const newChildren = [];
+      const newChildren: PortableTextSpan[] = [];
       for (const span of block.children) {
         if (span._type === 'span' && span.text) {
           if (currentLength + span.text.length > maxLength) {
             const remainingLength = maxLength - currentLength;
-            if (remainingLength <=0) {
+            if (remainingLength <= 0) {
               newChildren.push({ ...span, text: '...' });
               currentLength = maxLength;
               break;
@@ -41,11 +70,11 @@ const truncatePortableText = (blocks: any[], maxLength: number) => {
             const newText = span.text.substring(0, remainingLength) + '...';
             newChildren.push({ ...span, text: newText });
             currentLength += remainingLength;
-            break; 
+            break;
           }
           currentLength += span.text.length;
         }
-        newChildren.push(span); // Push span whether it's text or not, or if it didn't exceed length
+        newChildren.push(span);
       }
       truncatedBlocks.push({ ...block, children: newChildren });
     } else {

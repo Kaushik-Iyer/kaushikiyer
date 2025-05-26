@@ -7,13 +7,42 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 
+// Define Sanity image type
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+
+// Define PortableText block types
+interface PortableTextSpan {
+  _type: 'span';
+  text: string;
+  marks?: string[];
+}
+
+interface PortableTextBlock {
+  _type: 'block';
+  _key: string;
+  children: PortableTextSpan[];
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+  markDefs?: Array<{
+    _key: string;
+    _type: string;
+    href?: string;
+  }>;
+}
+
 interface Project extends SanityDocument {
   title: string;
   slug: { current: string };
   publishedAt: string;
   description?: string; // Assuming description might be portable text or simple text
-  body?: any[]; // For more detailed content if you add a body field to project schema
-  mainImage?: any;
+  body?: PortableTextBlock[]; // For more detailed content if you add a body field to project schema
+  mainImage?: SanityImage;
   projectUrl?: string;
   tags?: string[];
 }

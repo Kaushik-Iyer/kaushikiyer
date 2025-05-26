@@ -30,8 +30,9 @@ export async function GET(request: Request) {
 
     const data = await apiResponse.json();
     return NextResponse.json(data);
-  } catch (error: any) {
-    console.error('Proxy request failed for ${targetUrl}:', error);
-    return NextResponse.json({ error: 'Proxy request failed', details: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    console.error(`Proxy request failed for ${targetUrl}:`, error);
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    return NextResponse.json({ error: 'Proxy request failed', details: errorMessage }, { status: 500 });
   }
 }

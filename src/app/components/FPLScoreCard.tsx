@@ -81,7 +81,12 @@ interface FPLEntryHistory {
 
 interface FPLPicksData {
   active_chip: string | null;
-  automatic_subs: any[]; 
+  automatic_subs: { // Define a more specific type if known, or use unknown[]
+    entry: number;
+    element_in: number;
+    element_out: number;
+    event: number;
+  }[]; 
   entry_history: FPLEntryHistory;
   picks: FPLPick[];
 }
@@ -233,9 +238,10 @@ const FPLScoreCard = ({ managerId }: { managerId: number }) => {
           playedMatchesCount,
         });
 
-      } catch (err: any) {
+      } catch (err: unknown) { // Changed from any to unknown
         console.error("FPL Fetch Error:", err);
-        setError(err.message || 'An error occurred while fetching FPL data.');
+        const message = err instanceof Error ? err.message : 'An error occurred while fetching FPL data.';
+        setError(message);
       } finally {
         setLoading(false);
       }
@@ -257,7 +263,7 @@ const FPLScoreCard = ({ managerId }: { managerId: number }) => {
       {fplData.activePlayersCount > 0 && (
         <div className="mb-4">
           <p className="text-xs sm:text-sm text-text/70 mb-1">
-            {fplData.playedMatchesCount} of {fplData.activePlayersCount} active players' matches started/finished.
+            {fplData.playedMatchesCount} of {fplData.activePlayersCount} active players&apos; matches started/finished.
           </p>
           <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
             <div 
@@ -306,7 +312,7 @@ const FPLScoreCard = ({ managerId }: { managerId: number }) => {
           ))}
         </ul>
       ) : (
-        <p className="text-text/70">No squad data found for the current gameweek or gameweek hasn't started.</p>
+        <p className="text-text/70">No squad data found for the current gameweek or gameweek hasn&apos;t started.</p>
       )}
     </div>
   );

@@ -7,15 +7,44 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 
+// Define Sanity image type
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+
+// Define PortableText block types
+interface PortableTextSpan {
+  _type: 'span';
+  text: string;
+  marks?: string[];
+}
+
+interface PortableTextBlock {
+  _type: 'block';
+  _key: string;
+  children: PortableTextSpan[];
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+  markDefs?: Array<{
+    _key: string;
+    _type: string;
+    href?: string;
+  }>;
+}
+
 interface ExperienceItem extends SanityDocument {
   jobTitle: string;
   company: string;
   slug: { current: string };
   startDate: string;
   endDate: string;
-  companyLogo?: any;
+  companyLogo?: SanityImage;
   location?: string;
-  description?: any[]; // Portable Text
+  description?: PortableTextBlock[];
   tags?: string[];
 }
 

@@ -2,10 +2,29 @@
 'use client'
 
 import React, { useEffect, useState, useRef } from 'react';
-import { MapContainer, TileLayer, GeoJSON, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import L, { LatLngExpression, GeoJSON as LeafletGeoJSON } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { client } from '@/sanity/lib/client';
+
+// GeoJSON types
+interface GeoJSONFeature {
+  type: 'Feature';
+  properties: {
+    iso_a2: string;
+    admin: string;
+    [key: string]: string | number | boolean | null;
+  };
+  geometry: {
+    type: string;
+    coordinates: number[] | number[][] | number[][][] | number[][][][];
+  };
+}
+
+interface GeoJSONData {
+  type: 'FeatureCollection';
+  features: GeoJSONFeature[];
+}
 
 interface VisitedPlace {
   _id: string;
@@ -28,7 +47,7 @@ const geoJsonUrl = '/custom.geo.json'; // Using local custom GeoJSON
 
 const TravelMap: React.FC = () => {
   const [visitedPlaces, setVisitedPlaces] = useState<VisitedPlace[]>([]);
-  const [geoJsonData, setGeoJsonData] = useState<any>(null);
+  const [geoJsonData, setGeoJsonData] = useState<GeoJSONData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const geoJsonLayerRef = useRef<LeafletGeoJSON | null>(null);
@@ -54,9 +73,9 @@ const TravelMap: React.FC = () => {
         setVisitedPlaces(placesData || []);
         setGeoJsonData(geoData);
 
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Failed to load map data:", err);
-        setError(`Failed to load map data: ${err.message}`);
+        setError(`Failed to load map data: ${err instanceof Error ? err.message : 'Unknown error'}`);
         setVisitedPlaces([]);
         setGeoJsonData(null);
       } finally {
@@ -68,9 +87,9 @@ const TravelMap: React.FC = () => {
 
   const visitedCountryCodes = visitedPlaces.map(place => place.countryCode);
 
-  const geoJsonStyle = (feature?: any) => {
+  const geoJsonStyle = (feature?: GeoJSONFeature) => {
     if (!feature || !feature.properties) return {};
-    const countryCode = feature.properties.iso_a2; // Or the relevant property from your GeoJSON
+    const countryCode = feature.properties.iso_a2;
     const isVisited = visitedCountryCodes.includes(countryCode);
     return {
       fillColor: isVisited ? '#4F46E5' : '#D1D5DB',
@@ -81,8 +100,8 @@ const TravelMap: React.FC = () => {
     };
   };
 
-  const onEachFeature = (feature: any, layer: L.Layer) => {
-    if (feature.properties && feature.properties.admin) { // Or feature.properties.name
+  const onEachFeature = (feature: GeoJSONFeature, layer: L.Layer) => {
+    if (feature.properties && feature.properties.admin) {
       const countryName = feature.properties.admin;
       const countryCode = feature.properties.iso_a2;
       const isVisited = visitedCountryCodes.includes(countryCode);
@@ -98,7 +117,8 @@ const TravelMap: React.FC = () => {
 
   // This is to ensure Leaflet icons work correctly with Next.js/Webpack
   useEffect(() => {
-    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    // Use a type assertion that preserves type safety while allowing the delete operation
+    delete (L.Icon.Default.prototype as { _getIconUrl?: () => string })._getIconUrl;
     L.Icon.Default.mergeOptions({
       iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
       iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
@@ -133,7 +153,7 @@ const TravelMap: React.FC = () => {
       {geoJsonData && (
         <GeoJSON
           ref={geoJsonLayerRef}
-          data={geoJsonData as any} // Type assertion for GeoJSON data
+          data={geoJsonData} // No type assertion needed now
           style={geoJsonStyle}
           onEachFeature={onEachFeature}
         />

@@ -5,11 +5,30 @@ import Layout from "@/app/components/layout/Layout";
 import { PortableText } from "@portabletext/react";
 import { notFound } from 'next/navigation'; // Import notFound
 
+// Define types for Portable Text blocks
+interface PortableTextSpan {
+  _type: 'span';
+  text: string;
+  marks?: string[];
+}
+
+interface PortableTextBlock {
+  _type: 'block';
+  _key: string;
+  children: PortableTextSpan[];
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+  markDefs?: Array<{
+    _key: string;
+    _type: string;
+    href?: string;
+  }>;
+}
+
 interface Post extends SanityDocument {
   title: string;
   slug: { current: string };
   publishedAt: string;
-  body: any[]; // Portable Text content
+  body: PortableTextBlock[]; // Changed from any[]
 }
 
 // Define your query

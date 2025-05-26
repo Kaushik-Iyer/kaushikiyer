@@ -6,14 +6,43 @@ import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 
+// Define Sanity image type
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+
+// Define PortableText block types
+interface PortableTextSpan {
+  _type: 'span';
+  text: string;
+  marks?: string[];
+}
+
+interface PortableTextBlock {
+  _type: 'block';
+  _key: string;
+  children: PortableTextSpan[];
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+  markDefs?: Array<{
+    _key: string;
+    _type: string;
+    href?: string;
+  }>;
+}
+
 interface EducationItem extends SanityDocument {
   degree: string;
   institution: string;
   slug: { current: string };
   startDate: string;
   endDate: string;
-  institutionLogo?: any;
-  description?: any[]; // Portable Text
+  institutionLogo?: SanityImage;
+  description?: PortableTextBlock[];
 }
 
 const EDUCATION_QUERY = `*[_type == "education"]|order(endDate desc, startDate desc){

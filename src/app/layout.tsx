@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./styles/globals.css"; // Correct path relative to this file
 import { ThemeProvider } from "next-themes";
-import ThemeSwitcher from "@/app/components/ThemeSwitcher";
 import GoogleAnalytics from "@/app/components/GoogleAnalytics"; 
 
 const inter = Inter({ subsets: ["latin"], display: 'swap' });

@@ -12,7 +12,13 @@ interface ExperienceItem extends SanityDocument {
   slug: { current: string };
   startDate: string;
   endDate: string;
-  companyLogo?: any;
+  companyLogo?: {
+    _type: 'image';
+    asset: {
+      _ref: string;
+      _type: 'reference';
+    };
+  };
   location?: string;
 }
 

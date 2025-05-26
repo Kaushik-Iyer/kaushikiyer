@@ -7,21 +7,50 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from "@portabletext/react";
 import TravelMap from "@/app/components/TravelMap"; 
-import FPLScoreCard from "@/app/components/FPLScoreCard"; // Added import
+import FPLScoreCard from "@/app/components/FPLScoreCard";
 
-// Interface definitions (can be moved to a types file later)
+// Define Sanity image type
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+
+// Define PortableText block types
+interface PortableTextSpan {
+  _type: 'span';
+  text: string;
+  marks?: string[];
+}
+
+interface PortableTextBlock {
+  _type: 'block';
+  _key: string;
+  children: PortableTextSpan[];
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+  markDefs?: Array<{
+    _key: string;
+    _type: string;
+    href?: string;
+  }>;
+}
+
+// Interface definitions with proper types
 interface Post extends SanityDocument {
   title: string;
   slug: { current: string };
   publishedAt: string;
-  body?: any[]; 
+  body?: PortableTextBlock[]; 
 }
 
 interface Project extends SanityDocument {
   title: string;
   slug: { current: string };
   description?: string;
-  mainImage?: any;
+  mainImage?: SanityImage;
 }
 
 interface EducationItem extends SanityDocument {
@@ -29,7 +58,7 @@ interface EducationItem extends SanityDocument {
   institution: string;
   slug: { current: string };
   endDate: string;
-  institutionLogo?: any;
+  institutionLogo?: SanityImage;
 }
 
 interface ExperienceItem extends SanityDocument {
@@ -37,15 +66,15 @@ interface ExperienceItem extends SanityDocument {
   company: string;
   slug: { current: string };
   endDate: string;
-  companyLogo?: any;
+  companyLogo?: SanityImage;
 }
 
 interface Testimonial extends SanityDocument {
   personName: string;
   relation?: string;
-  testimonialContent: any[];
+  testimonialContent: PortableTextBlock[];
   slug: { current: string };
-  personImage?: any;
+  personImage?: SanityImage;
 }
 
 // Queries for the most recent item of each type
@@ -68,7 +97,7 @@ const RECENT_TESTIMONIAL_QUERY = `*[_type == "testimonial" && defined(slug.curre
 const revalidateOptions = { next: { revalidate: 60 } };
 
 // Helper to truncate Portable Text for preview
-const truncatePortableText = (blocks: any[], maxLength: number) => {
+const truncatePortableText = (blocks: PortableTextBlock[], maxLength: number): PortableTextBlock[] => {
   if (!blocks || !Array.isArray(blocks)) return [];
   let currentLength = 0;
   const truncatedBlocks = [];
@@ -125,14 +154,14 @@ export default async function HomePage() {
       <div className="space-y-16 py-12">
 
         <section className="mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-text">Hello, I’m Kaushik Iyer.</h1>
+          <h1 className="text-4xl font-bold mb-4 text-text">Hello, I&apos;m Kaushik Iyer.</h1>
           <p className="text-lg mb-2 text-text/90">CS Masters @ Cornell</p>
           <p className="text-lg mb-4 text-text/80">
-            I'm Kaushik Iyer, a Computer Science Masters student at Cornell University. Originally from Mumbai, I'm currently based in Ithaca, NY. I'm always eager to take on new challenges and contribute to innovative projects in the tech world.
+            I&apos;m Kaushik Iyer, a Computer Science Masters student at Cornell University. Originally from Mumbai, I&apos;m currently based in Ithaca, NY. I&apos;m always eager to take on new challenges and contribute to innovative projects in the tech world.
           </p>
           <h2 className="text-3xl font-bold mb-3 text-text">Who am I?</h2>
           <p className="text-lg text-text/80">
-            I'm a software developer with a passion for backend and product development. When I'm not coding, you'll find me watching soccer, exploring new cuisines, reading books, or exploring the beautiful gorges of Ithaca. I believe in building technology that makes a difference, whether it's through optimizing system performance or creating tools that bring value to users.
+            I&apos;m a software developer with a passion for backend and product development. When I&apos;m not coding, you&apos;ll find me watching soccer, exploring new cuisines, reading books, or exploring the beautiful gorges of Ithaca. I believe in building technology that makes a difference, whether it&apos;s through optimizing system performance or creating tools that bring value to users.
           </p>
         </section>
 
@@ -241,9 +270,6 @@ export default async function HomePage() {
           <section>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl sm:text-3xl font-bold text-text">Recent Experience</h2>
-              <Link href="/experience" className="text-primary hover:text-primary/80 hover:underline">
-                View All Experience &rarr;
-              </Link>
             </div>
             <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
               <Link href={`/experience/${recentExperience.slug.current}`} className="block group">
@@ -272,7 +298,7 @@ export default async function HomePage() {
         {/* Travel Map Section */}
         <section>
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-text">Places I've Visited</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-text">Places I&apos;ve Visited</h2>
           </div>
           <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
             <TravelMap />

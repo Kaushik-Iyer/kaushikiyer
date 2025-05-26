@@ -6,13 +6,41 @@ import { PortableText } from "@portabletext/react";
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
+// Define Sanity image type
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+
+// Define PortableText block types
+interface PortableTextSpan {
+  _type: 'span';
+  text: string;
+  marks?: string[];
+}
+
+interface PortableTextBlock {
+  _type: 'block';
+  _key: string;
+  children: PortableTextSpan[];
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+  markDefs?: Array<{
+    _key: string;
+    _type: string;
+    href?: string;
+  }>;
+}
 
 interface Testimonial extends SanityDocument {
   personName: string; // Changed from name
   slug: { current: string };
   relation?: string; // Changed from company/role to a single relation field
-  testimonialContent: any[]; // Changed from testimonial, Portable Text
-  personImage?: any; // Changed from avatar
+  testimonialContent: PortableTextBlock[]; // Changed from testimonial, Portable Text
+  personImage?: SanityImage; // Changed from avatar
   testimonialDate?: string; // Changed from date
 }
 

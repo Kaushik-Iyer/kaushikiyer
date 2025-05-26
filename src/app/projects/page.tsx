@@ -6,12 +6,21 @@ import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+  
 interface Project extends SanityDocument {
   title: string;
   slug: { current: string };
   publishedAt: string;
   description?: string;
-  mainImage?: any;
+  mainImage?: SanityImage;
 }
 
 const PROJECTS_QUERY = `*[_type == "project" && defined(slug.current)]|order(publishedAt desc){
