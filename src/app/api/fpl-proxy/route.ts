@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 
+export const runtime = 'edge'; // Added for Cloudflare Pages compatibility
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const fplEndpoint = searchParams.get('endpoint');
