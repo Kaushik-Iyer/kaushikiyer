@@ -53,7 +53,7 @@ interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function PostPage({ params, searchParams }: PageProps) {
+export default async function PostPage({ params }: Pick<PageProps, 'params'>) {
   const post = await client.fetch<Post>(
     SINGLE_POST_QUERY,
     { slug: params.slug },
