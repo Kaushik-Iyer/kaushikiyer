@@ -48,7 +48,12 @@ export async function generateStaticParams() {
 
 const revalidateOptions = { next: { revalidate: 60 } };
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
+interface PageProps {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default async function PostPage({ params, searchParams }: PageProps) {
   const post = await client.fetch<Post>(
     SINGLE_POST_QUERY,
     { slug: params.slug },
