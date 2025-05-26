@@ -47,7 +47,7 @@ export default async function ExperiencePage() {
                   {item.companyLogo && (
                     <div className="flex-shrink-0 w-20 h-20 relative rounded-md overflow-hidden border border-accent/50">
                       <Image
-                        src={urlFor(item.companyLogo).width(100).height(100).fit('contain').url()}
+                        src={urlFor(item.companyLogo).width(100).height(100).url()}
                         alt={`${item.company} logo`}
                         layout="fill"
                         objectFit="contain"

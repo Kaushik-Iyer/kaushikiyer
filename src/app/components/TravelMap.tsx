@@ -6,24 +6,13 @@ import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import L, { LatLngExpression, GeoJSON as LeafletGeoJSON } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { client } from '@/sanity/lib/client';
+import { Feature, FeatureCollection, Geometry } from 'geojson'; // Added import
 
-// GeoJSON types
-interface GeoJSONFeature {
-  type: 'Feature';
-  properties: {
-    iso_a2: string;
-    admin: string;
-    [key: string]: string | number | boolean | null;
-  };
-  geometry: {
-    type: string;
-    coordinates: number[] | number[][] | number[][][] | number[][][][];
-  };
-}
-
-interface GeoJSONData {
-  type: 'FeatureCollection';
-  features: GeoJSONFeature[];
+// Define the expected properties for our GeoJSON features
+interface CustomFeatureProperties {
+  iso_a2: string;
+  admin: string;
+  // Add any other specific properties you expect from your custom.geo.json
 }
 
 interface VisitedPlace {
@@ -47,7 +36,8 @@ const geoJsonUrl = '/custom.geo.json'; // Using local custom GeoJSON
 
 const TravelMap: React.FC = () => {
   const [visitedPlaces, setVisitedPlaces] = useState<VisitedPlace[]>([]);
-  const [geoJsonData, setGeoJsonData] = useState<GeoJSONData | null>(null);
+  // Updated geoJsonData state to use standard FeatureCollection type
+  const [geoJsonData, setGeoJsonData] = useState<FeatureCollection<Geometry, CustomFeatureProperties> | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const geoJsonLayerRef = useRef<LeafletGeoJSON | null>(null);
@@ -87,9 +77,10 @@ const TravelMap: React.FC = () => {
 
   const visitedCountryCodes = visitedPlaces.map(place => place.countryCode);
 
-  const geoJsonStyle = (feature?: GeoJSONFeature) => {
-    if (!feature || !feature.properties) return {};
-    const countryCode = feature.properties.iso_a2;
+  // Updated geoJsonStyle to use standard Feature type and allow for optional feature parameter
+  const geoJsonStyle = (feature?: Feature<Geometry, CustomFeatureProperties>) => {
+    if (!feature || !feature.properties) return {}; 
+    const countryCode = feature.properties.iso_a2; 
     const isVisited = visitedCountryCodes.includes(countryCode);
     return {
       fillColor: isVisited ? '#4F46E5' : '#D1D5DB',
@@ -100,7 +91,8 @@ const TravelMap: React.FC = () => {
     };
   };
 
-  const onEachFeature = (feature: GeoJSONFeature, layer: L.Layer) => {
+  // Updated onEachFeature to use standard Feature type
+  const onEachFeature = (feature: Feature<Geometry, CustomFeatureProperties>, layer: L.Layer) => {
     if (feature.properties && feature.properties.admin) {
       const countryName = feature.properties.admin;
       const countryCode = feature.properties.iso_a2;
@@ -153,7 +145,7 @@ const TravelMap: React.FC = () => {
       {geoJsonData && (
         <GeoJSON
           ref={geoJsonLayerRef}
-          data={geoJsonData} // No type assertion needed now
+          data={geoJsonData} // No 'as any'
           style={geoJsonStyle}
           onEachFeature={onEachFeature}
         />

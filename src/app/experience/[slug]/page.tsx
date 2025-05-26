@@ -63,10 +63,14 @@ export async function generateStaticParams() {
 
 const revalidateOptions = { next: { revalidate: 60 } };
 
-export default async function ExperienceItemPage({ params }: { params: { slug: string } }) {
+// Type for params in Next.js 15
+type Params = Promise<{ slug: string }>
+
+export default async function ExperienceItemPage({ params }: { params: Params }) {
+  const { slug } = await params;
   const item = await client.fetch<ExperienceItem>(
     SINGLE_EXPERIENCE_QUERY,
-    { slug: params.slug },
+    { slug },
     revalidateOptions
   );
 
@@ -81,7 +85,7 @@ export default async function ExperienceItemPage({ params }: { params: { slug: s
           {item.companyLogo && (
             <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 relative rounded-lg overflow-hidden border border-accent/50 shadow-sm mb-4 sm:mb-0 sm:mr-6"> {/* Changed border-black/10 */}
               <Image
-                src={urlFor(item.companyLogo).width(200).height(200).fit('contain').url()}
+                src={urlFor(item.companyLogo).width(200).height(200).url()}
                 alt={`${item.company} logo`}
                 layout="fill"
                 objectFit="contain"
@@ -110,7 +114,7 @@ export default async function ExperienceItemPage({ params }: { params: { slug: s
           <div className="mt-8 pt-4 border-t border-accent"> {/* Changed border-black/10 */}
             <h3 className="text-lg font-semibold mb-2 text-text">Skills/Technologies Used:</h3> {/* Ensured text-text */}
             <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
+              {item.tags.map((tag) => (
                 <span key={tag} className="bg-accent text-secondary px-3 py-1 rounded-full text-sm"> {/* Changed bg-gray-200 text-gray-700 */}
                   {tag}
                 </span>

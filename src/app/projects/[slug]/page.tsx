@@ -62,10 +62,14 @@ export async function generateStaticParams() {
 
 const revalidateOptions = { next: { revalidate: 60 } };
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
+// Type for params in Next.js 15
+type Params = Promise<{ slug: string }>
+
+export default async function ProjectPage({ params }: { params: Params }) {
+  const { slug } = await params;
   const project = await client.fetch<Project>(
     SINGLE_PROJECT_QUERY,
-    { slug: params.slug },
+    { slug },
     revalidateOptions
   );
 

@@ -6,8 +6,7 @@ import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from "@portabletext/react";
-import TravelMap from "@/app/components/TravelMap"; 
-import FPLScoreCard from "@/app/components/FPLScoreCard";
+import { TravelMap, FPLScoreCard } from '@/app/components/ClientOnlyWrapper';
 
 // Define Sanity image type
 interface SanityImage {

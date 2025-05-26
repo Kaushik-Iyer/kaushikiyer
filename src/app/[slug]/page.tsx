@@ -48,15 +48,14 @@ export async function generateStaticParams() {
 
 const revalidateOptions = { next: { revalidate: 60 } };
 
-interface PageProps {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
+// Type for params in Next.js 15
+type Params = Promise<{ slug: string }>
 
-export default async function PostPage({ params }: Pick<PageProps, 'params'>) {
+export default async function PostPage({ params }: { params: Params }) {
+  const { slug } = await params;
   const post = await client.fetch<Post>(
     SINGLE_POST_QUERY,
-    { slug: params.slug },
+    { slug },
     revalidateOptions
   );
 

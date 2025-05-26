@@ -61,10 +61,14 @@ export async function generateStaticParams() {
 
 const revalidateOptions = { next: { revalidate: 60 } };
 
-export default async function EducationItemPage({ params }: { params: { slug: string } }) {
+// Type for params in Next.js 15
+type Params = Promise<{ slug: string }>
+
+export default async function EducationItemPage({ params }: { params: Params }) {
+  const { slug } = await params;
   const item = await client.fetch<EducationItem>(
     SINGLE_EDUCATION_QUERY,
-    { slug: params.slug },
+    { slug },
     revalidateOptions
   );
 
