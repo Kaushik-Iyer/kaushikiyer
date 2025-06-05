@@ -4,6 +4,8 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import crypto from 'crypto'; // Import crypto for signature verification
 
+export const runtime = 'edge'; // Add this line
+
 // Define a type for the expected Sanity webhook payload for a suggestion
 // Adjust this based on the actual fields you have in your 'suggestion' schema
 interface SuggestionPayload {
@@ -123,10 +125,13 @@ export async function POST(request: NextRequest) {
     console.log('Email sent successfully:', data);
     return NextResponse.json({ message: 'Webhook received and email sent successfully!' });
 
-  } catch (err) {
+  } catch (err: unknown) { // Changed from any to unknown
     console.error('Webhook processing error:', err);
-    // It's good practice to check if err is an instance of Error before accessing err.message
-    const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+    // Type guard to safely access err.message
+    let errorMessage = 'Failed to process webhook';
+    if (err instanceof Error) {
+      errorMessage = err.message;
+    }
     return NextResponse.json({ error: 'Failed to process webhook', details: errorMessage }, { status: 500 });
   }
 }
