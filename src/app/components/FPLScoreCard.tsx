@@ -280,13 +280,13 @@ const FPLScoreCard = ({ managerId }: { managerId: number }) => {
           {fplData.fixtures.map((player) => (
             <li 
               key={player.playerId} 
-              className={`p-2 sm:p-3 rounded-md border ${player.multiplier === 0 ? 'bg-gray-50 dark:bg-gray-800 opacity-60' : 'bg-background'} border-accent/50`}
+              className={`p-2 sm:p-3 rounded-md border bg-background border-accent/50`}
             >
               <div className="flex justify-between items-center">
                 <div className="flex-grow">
                   <span className={`font-semibold ${player.multiplier === 0 ? 'text-text/70' : 'text-text'}`}>
                     {player.playerName}
-                    {player.is_captain && <span className="ml-1 text-xs bg-red-600 text-white px-1.5 py-0.5 rounded-sm">C</span>} {/* Changed bg-primary to bg-red-600 for better light mode visibility */}
+                    {player.is_captain && <span className="ml-1 text-xs bg-red-600 text-white px-1.5 py-0.5 rounded-sm">C</span>} 
                     {player.is_vice_captain && !player.is_captain && <span className="ml-1 text-xs bg-gray-500 text-white px-1.5 py-0.5 rounded-sm">V</span>}
                   </span>
                   {player.kickoff_time && player.multiplier > 0 && (
