@@ -95,7 +95,7 @@ const Footer = () => {
               <div>
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50" // Changed text-white, bg-indigo-600 to bg-primary
+                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-text bg-primary hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50" // Changed text-white, bg-indigo-600 to bg-primary
                 >
                   {isSubmitting ? 'Submitting...' : 'Send Suggestion'}
                 </button>
