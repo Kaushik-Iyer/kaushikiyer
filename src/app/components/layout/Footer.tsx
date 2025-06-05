@@ -6,6 +6,8 @@ import { client } from '@/sanity/lib/client'; // Import Sanity client
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [suggestion, setSuggestion] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
 
@@ -24,10 +26,15 @@ const Footer = () => {
       // and has a field named 'text' for the suggestion content.
       await client.create({ 
         _type: 'suggestion', // Make sure this matches your Sanity schema type
-        text: suggestion 
+        text: suggestion,
+        userName: userName || undefined, // Send undefined if empty
+        userEmail: userEmail || undefined, // Send undefined if empty
+        // submittedAt is handled automatically by Sanity schema
       });
       setSubmitMessage('Suggestion submitted successfully!');
       setSuggestion('');
+      setUserName('');
+      setUserEmail('');
     } catch (err) {
       console.error("Failed to submit suggestion:", err);
       setSubmitMessage('Failed to submit suggestion. Please try again.');
@@ -88,7 +95,38 @@ const Footer = () => {
                   className="mt-1 block w-full px-3 py-2 border border-accent rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-background text-text" // Adjusted border, bg, text
                   value={suggestion}
                   onChange={(e) => setSuggestion(e.target.value)}
-                  placeholder="Any travel spots or feedback?"
+                  placeholder="Any travel spots or feedback? (Required)"
+                  disabled={isSubmitting}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="footer-user-name" className="sr-only">
+                  Your Name (Optional)
+                </label>
+                <input
+                  type="text"
+                  id="footer-user-name"
+                  name="userName"
+                  className="mt-1 block w-full px-3 py-2 border border-accent rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-background text-text"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  placeholder="Your Name (Optional)"
+                  disabled={isSubmitting}
+                />
+              </div>
+              <div>
+                <label htmlFor="footer-user-email" className="sr-only">
+                  Your Email (Optional)
+                </label>
+                <input
+                  type="email"
+                  id="footer-user-email"
+                  name="userEmail"
+                  className="mt-1 block w-full px-3 py-2 border border-accent rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-background text-text"
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                  placeholder="Your Email (Optional, for follow-up)"
                   disabled={isSubmitting}
                 />
               </div>

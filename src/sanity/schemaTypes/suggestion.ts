@@ -16,6 +16,25 @@ export default defineType({
       validation: (Rule) => Rule.required().min(10).max(5000),
     }),
     defineField({
+      name: 'userName',
+      title: 'User Name (Optional)',
+      type: 'string',
+      description: 'Name of the person submitting the suggestion (if provided).',
+    }),
+    defineField({
+      name: 'userEmail',
+      title: 'User Email (Optional)',
+      type: 'string',
+      description: 'Email of the person submitting the suggestion (if provided, for follow-up).',
+      validation: (Rule) =>
+        Rule.custom((email: string | undefined) => {
+          if (email && email.length > 0 && !/.+@.+\..+/.test(email)) {
+            return 'Please enter a valid email address.'
+          }
+          return true
+        }),
+    }),
+    defineField({
       name: 'submittedAt',
       title: 'Submitted At',
       type: 'datetime',
