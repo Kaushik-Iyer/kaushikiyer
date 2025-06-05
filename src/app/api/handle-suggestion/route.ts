@@ -2,7 +2,6 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import crypto from 'crypto'; // Import crypto for signature verification
 
 export const runtime = 'edge'; // Add this line
 
@@ -36,15 +35,41 @@ export async function POST(request: NextRequest) {
   // Read the raw body
   const requestBody = await request.text(); // Get raw body as text
 
-  // Reconstruct the signature
-  try {
-    const expectedSignature = crypto
-      .createHmac('sha256', sanityWebhookSecret)
-      .update(requestBody) // Use the raw string body
-      .digest('base64');
+  // Replace Node.js crypto with Web Crypto API
+  async function verifySignature(secret: string, body: string, signature: string): Promise<boolean> {
+    const encoder = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+      'raw',
+      encoder.encode(secret),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['sign']
+    );
 
-    if (crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature))) {
-      // Signature is valid, proceed with processing
+    const expectedSignature = await crypto.subtle.sign('HMAC', key, encoder.encode(body));
+    const expectedSignatureBase64 = Buffer.from(expectedSignature).toString('base64');
+
+    return timingSafeEqual(signature, expectedSignatureBase64);
+  }
+
+  // Custom timing-safe comparison function
+  function timingSafeEqual(a: string, b: string): boolean {
+    const aLength = a.length;
+    const bLength = b.length;
+    let result = aLength === bLength ? 0 : 1;
+
+    for (let i = 0; i < Math.min(aLength, bLength); i++) {
+      result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+    }
+
+    return result === 0;
+  }
+
+  // Update signature verification logic
+  try {
+    const isValidSignature = await verifySignature(sanityWebhookSecret, requestBody, signature);
+
+    if (isValidSignature) {
       console.log('Sanity webhook signature verified successfully.');
     } else {
       console.warn('Invalid Sanity webhook signature.');
