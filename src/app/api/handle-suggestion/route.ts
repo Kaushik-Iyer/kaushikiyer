@@ -123,8 +123,10 @@ export async function POST(request: NextRequest) {
     console.log('Email sent successfully:', data);
     return NextResponse.json({ message: 'Webhook received and email sent successfully!' });
 
-  } catch (err: any) {
+  } catch (err) {
     console.error('Webhook processing error:', err);
-    return NextResponse.json({ error: 'Failed to process webhook', details: err.message }, { status: 500 });
+    // It's good practice to check if err is an instance of Error before accessing err.message
+    const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+    return NextResponse.json({ error: 'Failed to process webhook', details: errorMessage }, { status: 500 });
   }
 }
