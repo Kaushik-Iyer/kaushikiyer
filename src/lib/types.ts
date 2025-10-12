@@ -65,3 +65,13 @@ export interface VisitedPlace {
   dateVisited?: string;
   notes?: string;
 }
+
+export interface SiteSettings {
+  id: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroDescription: string;
+  aboutTitle: string;
+  aboutDescription: string;
+  fplManagerId?: number;
+}

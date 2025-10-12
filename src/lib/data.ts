@@ -1,7 +1,7 @@
 // src/lib/data.ts - Data fetching utilities
 import fs from 'fs';
 import path from 'path';
-import type { Project, Experience, Education, Testimonial, Post, VisitedPlace } from './types';
+import type { Project, Experience, Education, Testimonial, Post, VisitedPlace, SiteSettings } from './types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -101,4 +101,17 @@ export function getVisitedPlaces(): VisitedPlace[] {
     if (!b.dateVisited) return -1;
     return new Date(b.dateVisited).getTime() - new Date(a.dateVisited).getTime();
   });
+}
+
+export function getSiteSettings(): SiteSettings {
+  const settings = readJsonFile<SiteSettings>('settings.json');
+  return settings[0] || {
+    id: 'site-settings',
+    heroTitle: "Hello, I'm Kaushik Iyer.",
+    heroSubtitle: "CS Masters @ Cornell",
+    heroDescription: "Your description here",
+    aboutTitle: "Who am I?",
+    aboutDescription: "Your about section here",
+    fplManagerId: 1361280
+  };
 }

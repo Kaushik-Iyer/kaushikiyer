@@ -88,6 +88,14 @@ export default function AdminDashboard() {
               <p className="text-text/70">Manage travel map locations</p>
             </div>
           </Link>
+
+          {/* Site Settings Card */}
+          <Link href="/admin/settings" className="block">
+            <div className="p-6 bg-card border border-accent rounded-lg hover:shadow-lg transition-shadow cursor-pointer">
+              <h2 className="text-2xl font-semibold mb-2 text-text">⚙️ Site Settings</h2>
+              <p className="text-text/70">Edit homepage intro text</p>
+            </div>
+          </Link>
         </div>
 
         <div className="mt-12 p-6 bg-card border border-accent rounded-lg">

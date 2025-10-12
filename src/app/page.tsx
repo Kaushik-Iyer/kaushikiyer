@@ -4,7 +4,7 @@ import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
 import { PortableText } from "@portabletext/react";
 import { TravelMap, FPLScoreCard } from '@/app/components/ClientOnlyWrapper';
-import { getProjects, getExperience, getEducation, getTestimonials, getPosts } from "@/lib/data";
+import { getProjects, getExperience, getEducation, getTestimonials, getPosts, getSiteSettings } from "@/lib/data";
 import type { Project, Experience, Education, Testimonial, Post } from "@/lib/types";
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -72,6 +72,7 @@ export default async function HomePage() {
   const education = getEducation();
   const experience = getExperience();
   const testimonials = getTestimonials();
+  const siteSettings = getSiteSettings();
 
   const recentPost = posts[0] || null;
   const recentProject = projects[0] || null;
@@ -79,21 +80,21 @@ export default async function HomePage() {
   const recentExperience = experience[0] || null;
   const recentTestimonial = testimonials[0] || null;
 
-  const fplManagerId = 1361280; // User's FPL Manager ID
+  const fplManagerId = siteSettings.fplManagerId || 1361280;
 
   return (
     <Layout>
       <div className="space-y-16 py-12">
 
         <section className="mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-text">Hello, I&apos;m Kaushik Iyer.</h1>
-          <p className="text-lg mb-2 text-text/90">CS Masters @ Cornell</p>
+          <h1 className="text-4xl font-bold mb-4 text-text">{siteSettings.heroTitle}</h1>
+          <p className="text-lg mb-2 text-text/90">{siteSettings.heroSubtitle}</p>
           <p className="text-lg mb-4 text-text/80">
-            I&apos;m Kaushik Iyer, a Computer Science Masters student at Cornell University. Originally from Mumbai, I&apos;m currently based in Ithaca, NY. I&apos;m always eager to take on new challenges and contribute to innovative projects in the tech world.
+            {siteSettings.heroDescription}
           </p>
-          <h2 className="text-3xl font-bold mb-3 text-text">Who am I?</h2>
+          <h2 className="text-3xl font-bold mb-3 text-text">{siteSettings.aboutTitle}</h2>
           <p className="text-lg text-text/80">
-            I&apos;m a software developer with a passion for backend and product development. When I&apos;m not coding, you&apos;ll find me watching soccer, exploring new cuisines, reading books, or exploring the beautiful gorges of Ithaca. I believe in building technology that makes a difference, whether it&apos;s through optimizing system performance or creating tools that bring value to users.
+            {siteSettings.aboutDescription}
           </p>
         </section>
 
