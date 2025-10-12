@@ -64,6 +64,9 @@ export interface VisitedPlace {
   city?: string;
   dateVisited?: string;
   notes?: string;
+  latitude?: number;
+  longitude?: number;
+  cityImage?: string; // Path to image from that city
 }
 
 export interface SiteSettings {

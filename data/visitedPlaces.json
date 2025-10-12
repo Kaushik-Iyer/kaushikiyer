@@ -5,15 +5,21 @@
     "countryCode": "IN",
     "city": "Mumbai",
     "dateVisited": "",
-    "notes": ""
+    "notes": "The city where I grew up! Gateway of India, Marine Drive, and the best street food.",
+    "latitude": 19.0760,
+    "longitude": 72.8777,
+    "cityImage": "/images/education/cornell-university.png"
   },
   {
     "id": "1760247523151",
     "countryName": "United States",
     "countryCode": "US",
-    "city": "",
+    "city": "Seattle",
     "dateVisited": "",
-    "notes": ""
+    "notes": "Amazing tech hub! Visited the Space Needle and Pike Place Market. Great coffee culture.",
+    "latitude": 47.6062,
+    "longitude": -122.3321,
+    "cityImage": "/images/projects/soccer-drop-in-logger.png"
   },
   {
     "id": "1760247544659",

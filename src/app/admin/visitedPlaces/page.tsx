@@ -160,12 +160,41 @@ function PlaceForm({
   onCancel: () => void; 
 }) {
   const [formData, setFormData] = useState(place);
+  const [uploading, setUploading] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | undefined>(place.cityImage);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Ensure countryCode is uppercase
     formData.countryCode = formData.countryCode.toUpperCase();
     onSave(formData);
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      const uploadFormData = new FormData();
+      uploadFormData.append('file', file);
+      uploadFormData.append('category', 'visitedPlaces');
+
+      const response = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: uploadFormData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setFormData({ ...formData, cityImage: data.path });
+        setImagePreview(data.path);
+      }
+    } catch (error) {
+      console.error('Failed to upload image:', error);
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
@@ -236,6 +265,61 @@ function PlaceForm({
             rows={3}
             placeholder="Brief notes or highlights about your visit..."
           />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-text mb-2">
+              Latitude
+              <span className="text-xs text-text/60 block">For pin placement on map</span>
+            </label>
+            <input
+              type="number"
+              step="any"
+              value={formData.latitude || ''}
+              onChange={(e) => setFormData({ ...formData, latitude: e.target.value ? parseFloat(e.target.value) : undefined })}
+              className="w-full px-4 py-2 border border-accent rounded-md bg-background text-text"
+              placeholder="e.g., 19.0760"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-text mb-2">
+              Longitude
+              <span className="text-xs text-text/60 block">For pin placement on map</span>
+            </label>
+            <input
+              type="number"
+              step="any"
+              value={formData.longitude || ''}
+              onChange={(e) => setFormData({ ...formData, longitude: e.target.value ? parseFloat(e.target.value) : undefined })}
+              className="w-full px-4 py-2 border border-accent rounded-md bg-background text-text"
+              placeholder="e.g., 72.8777"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-text mb-2">City Image (Optional)</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="w-full px-4 py-2 border border-accent rounded-md bg-background text-text file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-amber-600 file:text-white hover:file:bg-amber-700"
+            disabled={uploading}
+          />
+          {uploading && <p className="text-sm text-amber-500 mt-2">Uploading...</p>}
+          {imagePreview && (
+            <div className="mt-4">
+              <p className="text-sm text-text/70 mb-2">Preview:</p>
+              <img 
+                src={imagePreview} 
+                alt="City Preview" 
+                className="max-w-md max-h-48 rounded-md border border-accent object-cover"
+              />
+              <p className="text-xs text-text/60 mt-1">{formData.cityImage}</p>
+            </div>
+          )}
         </div>
 
         <div className="flex gap-4">

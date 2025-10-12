@@ -2,7 +2,7 @@
 'use client'
 
 import React, { useEffect, useState, useRef } from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import L, { LatLngExpression, GeoJSON as LeafletGeoJSON } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Feature, FeatureCollection, Geometry } from 'geojson'; // Added import
@@ -51,6 +51,10 @@ const TravelMap: React.FC = () => {
 
         console.log("Fetched visited places:", placesData);
         console.log("Fetched GeoJSON data for map.");
+        
+        // Log places with coordinates for debugging
+        const placesWithCoords = placesData.filter((p: VisitedPlace) => p.latitude && p.longitude);
+        console.log("Places with coordinates:", placesWithCoords);
 
         setVisitedPlaces(placesData || []);
         setGeoJsonData(geoData);
@@ -142,6 +146,47 @@ const TravelMap: React.FC = () => {
           onEachFeature={onEachFeature}
         />
       )}
+      
+      {/* City markers for places with coordinates */}
+      {visitedPlaces
+        .filter(place => {
+          const hasCoords = place.latitude && place.longitude;
+          if (hasCoords) {
+            console.log(`Rendering marker for ${place.city || place.countryName} at [${place.latitude}, ${place.longitude}]`);
+          }
+          return hasCoords;
+        })
+        .map(place => (
+          <Marker 
+            key={place.id} 
+            position={[place.latitude!, place.longitude!]}
+          >
+            <Popup>
+              <div className="text-center">
+                <h3 className="font-semibold text-lg mb-2">
+                  {place.city || place.countryName}
+                </h3>
+                {place.cityImage && (
+                  <img 
+                    src={place.cityImage} 
+                    alt={place.city || place.countryName}
+                    className="w-48 h-32 object-cover rounded mb-2"
+                  />
+                )}
+                {place.notes && (
+                  <p className="text-sm text-gray-700 max-w-xs">
+                    {place.notes}
+                  </p>
+                )}
+                {place.dateVisited && (
+                  <p className="text-xs text-gray-500 mt-2">
+                    Visited: {new Date(place.dateVisited).toLocaleDateString()}
+                  </p>
+                )}
+              </div>
+            </Popup>
+          </Marker>
+        ))}
     </MapContainer>
   );
 };

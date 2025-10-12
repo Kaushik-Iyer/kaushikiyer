@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
   try {
     const places = await getVisitedPlaces();
     
-    // If not admin, only return essential fields (no notes)
+    // If not admin, return fields needed for map display (exclude private notes if needed)
     if (!isAdmin) {
       const publicPlaces = places.map(p => ({
         id: p.id,
@@ -23,6 +23,10 @@ export async function GET(request: NextRequest) {
         countryCode: p.countryCode,
         city: p.city,
         dateVisited: p.dateVisited,
+        latitude: p.latitude,
+        longitude: p.longitude,
+        cityImage: p.cityImage,
+        notes: p.notes, // Include notes for popup display
       }));
       return NextResponse.json(publicPlaces);
     }
