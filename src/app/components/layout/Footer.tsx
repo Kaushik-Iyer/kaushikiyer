@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { client } from '@/sanity/lib/client'; // Import Sanity client
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,25 +21,30 @@ const Footer = () => {
     setSubmitMessage(null);
 
     try {
-      // Assuming your Sanity schema for suggestions is named 'suggestion'
-      // and has a field named 'text' for the suggestion content.
-      await client.create({ 
-        _type: 'suggestion', // Make sure this matches your Sanity schema type
-        text: suggestion,
-        userName: userName || undefined, // Send undefined if empty
-        userEmail: userEmail || undefined, // Send undefined if empty
-        // submittedAt is handled automatically by Sanity schema
+      const response = await fetch('/api/admin/suggestions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: suggestion,
+          userName: userName || undefined,
+          userEmail: userEmail || undefined,
+        }),
       });
-      setSubmitMessage('Suggestion submitted successfully!');
-      setSuggestion('');
-      setUserName('');
-      setUserEmail('');
+
+      if (response.ok) {
+        setSubmitMessage('Suggestion submitted successfully!');
+        setSuggestion('');
+        setUserName('');
+        setUserEmail('');
+      } else {
+        throw new Error('Failed to submit');
+      }
     } catch (err) {
       console.error("Failed to submit suggestion:", err);
       setSubmitMessage('Failed to submit suggestion. Please try again.');
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitMessage(null), 5000); // Clear message after 5 seconds
+      setTimeout(() => setSubmitMessage(null), 5000);
     }
   };
 

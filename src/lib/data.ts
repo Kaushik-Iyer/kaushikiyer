@@ -1,7 +1,7 @@
 // src/lib/data.ts - Data fetching utilities
 import fs from 'fs';
 import path from 'path';
-import type { Project, Experience, Education, Testimonial, Post, VisitedPlace, SiteSettings } from './types';
+import type { Project, Experience, Education, Testimonial, Post, VisitedPlace, SiteSettings, Suggestion } from './types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -114,4 +114,11 @@ export function getSiteSettings(): SiteSettings {
     aboutDescription: "Your about section here",
     fplManagerId: 1361280
   };
+}
+
+export function getSuggestions(): Suggestion[] {
+  const suggestions = readJsonFile<Suggestion>('suggestions.json');
+  return suggestions.sort((a, b) => 
+    new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime()
+  );
 }

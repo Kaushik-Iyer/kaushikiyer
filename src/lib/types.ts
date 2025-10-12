@@ -78,3 +78,13 @@ export interface SiteSettings {
   aboutDescription: string;
   fplManagerId?: number;
 }
+
+export interface Suggestion {
+  id: string;
+  text: string;
+  userName?: string;
+  userEmail?: string;
+  submittedAt: string;
+  isReviewed?: boolean;
+  reviewedAt?: string;
+}

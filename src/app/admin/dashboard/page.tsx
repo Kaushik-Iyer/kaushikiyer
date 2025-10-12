@@ -96,6 +96,14 @@ export default function AdminDashboard() {
               <p className="text-text/70">Edit homepage intro text</p>
             </div>
           </Link>
+
+          {/* Suggestions Card */}
+          <Link href="/admin/suggestions" className="block">
+            <div className="p-6 bg-card border border-accent rounded-lg hover:shadow-lg transition-shadow cursor-pointer">
+              <h2 className="text-2xl font-semibold mb-2 text-text">💬 Suggestions</h2>
+              <p className="text-text/70">View user feedback & suggestions</p>
+            </div>
+          </Link>
         </div>
 
         <div className="mt-12 p-6 bg-card border border-accent rounded-lg">
