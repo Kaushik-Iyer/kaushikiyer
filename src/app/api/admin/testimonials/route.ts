@@ -45,7 +45,11 @@ export async function POST(request: NextRequest) {
     await writeJsonFile('testimonials.json', testimonials);
     return NextResponse.json({ success: true, testimonial });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to save testimonial' }, { status: 500 });
+    console.error('Error saving testimonial:', error);
+    return NextResponse.json({ 
+      error: 'Failed to save testimonial', 
+      details: error instanceof Error ? error.message : String(error) 
+    }, { status: 500 });
   }
 }
 

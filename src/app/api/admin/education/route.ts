@@ -49,7 +49,11 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json({ success: true, education });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to save education' }, { status: 500 });
+    console.error('Error saving education:', error);
+    return NextResponse.json({ 
+      error: 'Failed to save education', 
+      details: error instanceof Error ? error.message : String(error) 
+    }, { status: 500 });
   }
 }
 

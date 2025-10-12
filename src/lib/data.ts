@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import type { Project, Experience, Education, Testimonial, Post, VisitedPlace, SiteSettings, Suggestion } from './types';
+import { commitDataToGithub } from './github';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -18,9 +19,23 @@ function readJsonFile<T>(filename: string): T[] {
 }
 
 // Generic function to write JSON data
-export function writeJsonFile<T>(filename: string, data: T[]): void {
-  const filePath = path.join(DATA_DIR, filename);
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+export async function writeJsonFile<T>(filename: string, data: T[]): Promise<void> {
+  try {
+    // In development, write to local file system
+    if (process.env.NODE_ENV === 'development') {
+      const filePath = path.join(DATA_DIR, filename);
+      const jsonData = JSON.stringify(data, null, 2);
+      fs.writeFileSync(filePath, jsonData, 'utf-8');
+      console.log(`Successfully wrote to ${filename} (local)`);
+    } else {
+      // In production, commit to GitHub
+      await commitDataToGithub(filename, data as any);
+      console.log(`Successfully committed ${filename} to GitHub`);
+    }
+  } catch (error) {
+    console.error(`Error writing to ${filename}:`, error);
+    throw error; // Re-throw so the API route can catch it
+  }
 }
 
 // Projects

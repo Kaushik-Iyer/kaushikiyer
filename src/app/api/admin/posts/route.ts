@@ -45,7 +45,11 @@ export async function POST(request: NextRequest) {
     await writeJsonFile('posts.json', posts);
     return NextResponse.json({ success: true, post });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to save post' }, { status: 500 });
+    console.error('Error saving post:', error);
+    return NextResponse.json({ 
+      error: 'Failed to save post', 
+      details: error instanceof Error ? error.message : String(error) 
+    }, { status: 500 });
   }
 }
 

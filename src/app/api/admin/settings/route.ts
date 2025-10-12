@@ -31,7 +31,11 @@ export async function POST(request: NextRequest) {
     // Write as array with single item
     await writeJsonFile('settings.json', [updatedSettings]);
     return NextResponse.json({ success: true, settings: updatedSettings });
-  } catch {
-    return NextResponse.json({ error: 'Failed to save settings' }, { status: 500 });
+  } catch (error) {
+    console.error('Error saving settings:', error);
+    return NextResponse.json({ 
+      error: 'Failed to save settings', 
+      details: error instanceof Error ? error.message : String(error) 
+    }, { status: 500 });
   }
 }

@@ -108,6 +108,10 @@ export async function PATCH(request: NextRequest) {
     await writeJsonFile('suggestions.json', suggestions);
     return NextResponse.json({ success: true, suggestion: suggestions[index] });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to update suggestion' }, { status: 500 });
+    console.error('Error updating suggestion:', error);
+    return NextResponse.json({ 
+      error: 'Failed to update suggestion', 
+      details: error instanceof Error ? error.message : String(error) 
+    }, { status: 500 });
   }
 }
