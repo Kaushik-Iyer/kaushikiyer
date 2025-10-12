@@ -1,76 +1,23 @@
 // src/app/education/[slug]/page.tsx
-import { type SanityDocument } from "next-sanity";
-import { client } from "@/sanity/lib/client";
 import Layout from "@/app/components/layout/Layout";
-import { PortableText } from "@portabletext/react";
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
-
-// Define Sanity image type
-interface SanityImage {
-  _type: 'image';
-  asset: {
-    _ref: string;
-    _type: 'reference';
-  };
-  alt?: string;
-}
-
-// Define PortableText block types
-interface PortableTextSpan {
-  _type: 'span';
-  text: string;
-  marks?: string[];
-}
-
-interface PortableTextBlock {
-  _type: 'block';
-  _key: string;
-  children: PortableTextSpan[];
-  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-  markDefs?: Array<{
-    _key: string;
-    _type: string;
-    href?: string;
-  }>;
-}
-
-interface EducationItem extends SanityDocument {
-  degree: string;
-  institution: string;
-  slug: { current: string };
-  startDate: string;
-  endDate: string;
-  institutionLogo?: SanityImage;
-  description?: PortableTextBlock[];
-}
-
-const SINGLE_EDUCATION_QUERY = `*[_type == "education" && slug.current == $slug][0]{
-  _id, degree, institution, slug, startDate, endDate, institutionLogo, description
-}`;
+import { getEducation, getEducationBySlug } from '@/lib/data';
+import { PortableTextRenderer } from '@/app/components/PortableTextRenderer';
 
 export async function generateStaticParams() {
-  const items = await client.fetch<{ slug: string }[]>( 
-    `*[_type == "education" && defined(slug.current)]{ "slug": slug.current }`
-  );
+  const items = getEducation();
   return items.map((item) => ({
     slug: item.slug,
   }));
 }
-
-const revalidateOptions = { next: { revalidate: 60 } };
 
 // Type for params in Next.js 15
 type Params = Promise<{ slug: string }>
 
 export default async function EducationItemPage({ params }: { params: Params }) {
   const { slug } = await params;
-  const item = await client.fetch<EducationItem>(
-    SINGLE_EDUCATION_QUERY,
-    { slug },
-    revalidateOptions
-  );
+  const item = getEducationBySlug(slug);
 
   if (!item) {
     notFound();
@@ -78,30 +25,30 @@ export default async function EducationItemPage({ params }: { params: Params }) 
 
   return (
     <Layout>
-      <article className="max-w-2xl mx-auto p-4 sm:p-6 bg-background text-text border border-accent rounded-lg shadow-xl my-8"> {/* Added bg-background, text-text, border, margin */}
-        <div className="flex flex-col sm:flex-row items-center mb-8 pb-6 border-b border-accent"> {/* Changed border-black/10 */}
+      <article className="max-w-2xl mx-auto p-4 sm:p-6 bg-background text-text border border-accent rounded-lg shadow-xl my-8">
+        <div className="flex flex-col sm:flex-row items-center mb-8 pb-6 border-b border-accent">
           {item.institutionLogo && (
-            <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 relative rounded-lg overflow-hidden border border-accent/50 shadow-sm mb-4 sm:mb-0 sm:mr-6"> {/* Changed border-black/10 */}
+            <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 relative rounded-lg overflow-hidden border border-accent/50 shadow-sm mb-4 sm:mb-0 sm:mr-6">
               <Image
-                src={urlFor(item.institutionLogo).width(200).height(200).url()}
+                src={item.institutionLogo}
                 alt={`${item.institution} logo`}
-                layout="fill"
-                objectFit="contain"
+                fill
+                className="object-contain"
               />
             </div>
           )}
           <div className="text-center sm:text-left">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 text-text">{item.degree}</h1> {/* Ensured text-text */}
-            <p className="text-lg sm:text-xl text-text/80 mb-1">{item.institution}</p> {/* Changed text-black/80 */}
-            <p className="text-md text-text/60"> {/* Changed text-black/60 */}
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 text-text">{item.degree}</h1>
+            <p className="text-lg sm:text-xl text-text/80 mb-1">{item.institution}</p>
+            <p className="text-md text-text/60">
               {item.startDate.replace('-', '/')} – {item.endDate.replace('-', '/')}
             </p>
           </div>
         </div>
         
         {item.description && (
-          <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none text-text dark:prose-invert"> {/* Added text-text, dark:prose-invert */}
-            <PortableText value={item.description} />
+          <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none text-text dark:prose-invert">
+            <PortableTextRenderer value={item.description} />
           </div>
         )}
       </article>

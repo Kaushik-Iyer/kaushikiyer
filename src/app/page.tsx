@@ -2,66 +2,29 @@
 import Link from "next/link";
 import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
-import { PortableText } from "@portabletext/react";
 import { TravelMap, FPLScoreCard } from '@/app/components/ClientOnlyWrapper';
 import { getProjects, getExperience, getEducation, getTestimonials, getPosts, getSiteSettings } from "@/lib/data";
 import type { Project, Experience, Education, Testimonial, Post } from "@/lib/types";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
-// Define PortableText block types for rendering
-interface PortableTextSpan {
-  _type: 'span';
-  text: string;
-  marks?: string[];
-}
-
-interface PortableTextBlock {
-  _type: 'block';
-  _key: string;
-  children: PortableTextSpan[];
-  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-  markDefs?: Array<{
-    _key: string;
-    _type: string;
-    href?: string;
-  }>;
-}
-
-// Helper to truncate Portable Text for preview
-const truncatePortableText = (blocks: PortableTextBlock[], maxLength: number): PortableTextBlock[] => {
-  if (!blocks || !Array.isArray(blocks)) return [];
-  let currentLength = 0;
-  const truncatedBlocks = [];
+// Helper to truncate text from portable text blocks
+const truncateText = (blocks: any[] = [], maxLength: number): string => {
+  if (!blocks || !Array.isArray(blocks)) return '';
+  let text = '';
   for (const block of blocks) {
     if (block._type === 'block' && block.children) {
-      const newChildren = [];
       for (const span of block.children) {
-        if (span._type === 'span' && span.text) {
-          if (currentLength + span.text.length > maxLength) {
-            const remainingLength = maxLength - currentLength;
-            if (remainingLength <= 0) {
-                 newChildren.push({ ...span, text: '...' });
-                 currentLength = maxLength;
-                 break; // break from inner loop
-            }
-            newChildren.push({ ...span, text: span.text.substring(0, remainingLength) + '...' });
-            currentLength += remainingLength;
-            break; // break from inner loop
+        if (span.text) {
+          text += span.text;
+          if (text.length >= maxLength) {
+            return text.substring(0, maxLength) + '...';
           }
-          newChildren.push(span);
-          currentLength += span.text.length;
-        } else {
-          newChildren.push(span);
         }
       }
-      truncatedBlocks.push({ ...block, children: newChildren });
-      if (currentLength >= maxLength) break; // break from outer loop
-    } else {
-      truncatedBlocks.push(block); // Push non-block elements as is
     }
   }
-  return truncatedBlocks;
+  return text;
 };
 
 
@@ -120,7 +83,7 @@ export default async function HomePage() {
                 <h3 className="text-xl sm:text-2xl font-semibold mb-2 group-hover:text-primary text-text">{recentPost.title}</h3>
                 {recentPost.body && (
                   <div className="prose prose-sm max-w-none text-text/70 line-clamp-3 mb-3 dark:prose-invert">
-                     <PortableText value={truncatePortableText(recentPost.body, 150)} />
+                     <p>{truncateText(recentPost.body, 150)}</p>
                   </div>
                 )}
                 <p className="text-sm text-text/60">
@@ -265,7 +228,7 @@ export default async function HomePage() {
                       <p className="text-sm text-text/60">{recentTestimonial.relation}</p>
                     )}
                     <div className="prose prose-sm max-w-none text-text/70 mt-2 dark:prose-invert">
-                      <PortableText value={recentTestimonial.testimonialContent} />
+                      <p>{truncateText(recentTestimonial.testimonialContent, 300)}</p>
                     </div>
                   </div>
                 </div>
