@@ -1,0 +1,92 @@
+[
+  {
+    "description": "A weekend project using Google Maps APIs to suggest places to visit. Select a country, continent, or randomize!\n\nNote: Random results may include water bodies or remote locations.\n\nApart from geographical filters, you can also filter the places of interest:\n\nMuseums - Art Galleries\nMovie Theaters - Parks\nCampgrounds - Zoos\nRestaurants - Cafes\nBars - Shopping Malls\nDepartment Stores - Casinos\nNight Clubs - Amusement Parks\nStadiums - Churches\nMosques - Hindu Temples\nSynagogues\nAfter a place is selected, a maximum of 4 spots nearby are shown, with a photo and a description of it. All of the data is pulled from google maps.\n\n(Doesn't work for mobile screens)",
+    "mainImage": "/images/projects/where-next.png",
+    "projectUrl": "https://github.com/Kaushik-Iyer/where_next",
+    "publishedAt": "2025-01-26T03:21:00.000Z",
+    "slug": "where-next",
+    "tags": [
+      "JavaScript",
+      "Google Maps API",
+      "Python"
+    ],
+    "title": "Where Next?",
+    "id": "e6bcf4de-51f1-47b3-9b8e-177c3b84f1fa"
+  },
+  {
+    "description": "I developed this project during my first semester at Cornell, as a part of my M.Eng Project for the Systems Engineering faculty. This project aims to solve some of the shortcomings of existing greentech technologies such as lack of verifiability and difficulty in tracking orders by leveraging the strengths of blockchain technology and its features of immutability, verifiability, and transparency.\n\nAnd since this was a part of an academic research paper as well, extensive efforts were put into performance testing of the platform, which included performing load testing under multiple simultaneous users calling computationally intensive functionalities such as create project, and upload images. These tests were performed under different request body sizes and multiple such calls. The test suites and visualizations were custom developed in Python, primarily using modules such as asyncio, locust, and matplotlib for concurrency, load test configurations, and visualizations respectively. These were custom made because Postman's collection run functionality did not cater to this particular use case.",
+    "mainImage": "/images/projects/greentech-registry-on-blockchain.png",
+    "projectUrl": null,
+    "publishedAt": "2024-12-26T03:12:00.000Z",
+    "slug": "greentech-registry-on-blockchain",
+    "tags": [
+      "Solidity",
+      "React",
+      "Python",
+      "Smart Contracts"
+    ],
+    "title": "GreenTech Registry on Blockchain",
+    "id": "0cf665cf-8df8-4322-9a7f-2d284aa1a63a"
+  },
+  {
+    "description": "This was a personal project on which I worked at during summer 2024. Since a long time I had been wanting to develop a proper project from scratch which was not a youtube tutorial or a walkthrough. All of the ideas for this project were things that I wanted to implement. The whole backend and frontend has been done by myself, and since I like working on backend more, unfortunately the frontend aesthetics and accessibility are not upto the mark. Anyway, the frontend is in React, and backend built in python's FASTAPI. The scores are regularly updated from a third party API through websockets, the nearby grounds are fetched by using the user's location and Google Places API. The website also performs Google OAuth 2.0 through the frontend itself. A large part of the project also involved figuring out the hosting aspects, including getting a domain, and hosting the frontend as well as the backend folders. I eventually got a domain free for a year through name.com, hosted the frontend through cloudflare pages in their free tier, and got to host the backend in heroku for 2 years through Github's Student Developer Pack.",
+    "mainImage": "/images/projects/soccer-drop-in-statistics-logger.png",
+    "projectUrl": "https://github.com/Kaushik-Iyer/turf-logger-backend",
+    "publishedAt": "2024-12-02T03:20:00.000Z",
+    "slug": "soccer-drop-in-statistics-logger",
+    "tags": [
+      "Python",
+      "React",
+      "Websockets",
+      "Full Stack Development"
+    ],
+    "title": "Soccer Drop In Statistics Logger",
+    "id": "2f67e703-bd2f-495d-b1ee-b9eec642f666"
+  },
+  {
+    "description": "Built this group project as part of Cornell's Applications of Parallel Computers course (CS 5220), where we tackled the classic Traveling Salesman Problem using various optimization techniques. The goal was to push the boundaries of what's possible with parallel computing.\n\nWe implemented four different approaches - from exact solutions using Brute Force and Dynamic Programming to heuristic methods like Greedy and Genetic algorithms. The real challenge was optimizing these for parallel execution using OpenMP and CUDA.\n\nThe results were pretty exciting:\n\nGot a 20x speedup using OpenMP for the Dynamic Programming solution\nAchieved 8x improvement with CUDA implementation\nScaled our CUDA-optimized greedy algorithm to handle millions of cities\nThe project really showcases how parallel computing can transform traditionally complex problems. We built a comprehensive testing framework to make sure our optimizations didn't sacrifice accuracy for speed.\n\nThis was a great deep dive into high-performance computing, showing how theoretical concepts can be applied to solve real-world optimization challenges. I also attempted to solve the World TSP dataset using the CUDA version of the greedy algorithm implementation.",
+    "mainImage": "/images/projects/traveling-salesman-problem-optimization.png",
+    "projectUrl": "https://github.com/asmith236/cs5220-tsp-optimization",
+    "publishedAt": "2024-11-16T03:16:00.000Z",
+    "slug": "traveling-salesman-problem-optimization",
+    "tags": [
+      "C++",
+      "CUDA",
+      "OpenMP",
+      "Parallel Computing",
+      "Dynamic Programming"
+    ],
+    "title": "Traveling Salesman Problem Optimization",
+    "id": "58409038-081b-403f-9614-aa268c746905"
+  },
+  {
+    "description": "Developed a robust distributed key-value store that implements fundamental distributed systems concepts, progressing through multiple stages of complexity:\n\nStarted with implementing an exactly-once RPC protocol on top of an asynchronous network, ensuring reliable communication between nodes\nEnhanced the system with fault-tolerance capabilities through a primary-backup replication protocol\nImplemented Paxos consensus algorithm to ensure strong consistency across replicas, allowing the system to handle node failures and network partitions gracefully\nBuilt comprehensive test suites to verify system behavior under various failure scenarios and message ordering conditions\nThe project demonstrates practical implementation of distributed systems theory, focusing on:\n\nHandling asynchronous network communication\nManaging node failures and recovery\nImplementing distributed consensus\nEnsuring data consistency across replicas\nBuilding fault-tolerant distributed services\nThis implementation served as a practical exploration of how production-grade distributed storage systems handle reliability and consistency challenges.",
+    "mainImage": "/images/projects/replicated-key-value-store-with-paxos-consensus.png",
+    "projectUrl": null,
+    "publishedAt": "2024-11-16T03:14:00.000Z",
+    "slug": "replicated-key-value-store-with-paxos-consensus",
+    "tags": [
+      "Java",
+      "Distributed Systems"
+    ],
+    "title": "Replicated Key-Value Store with Paxos Consensus",
+    "id": "429dbe3b-fbe6-414c-8ef0-f80e77027041"
+  },
+  {
+    "description": "Developed an innovative healthcare automation system combining robotics and IoT to assist medical staff in routine patient care tasks. The project integrated multiple technologies to create a comprehensive solution for patient monitoring and medication delivery. It is a line following robot, which successfully navigates across '+' junctions, performs a U-turn at the end and starts sensory activity when the finger is placed. The value is updated immediately on the Blynk app's displays, and then the robot automatically follows the same path back to the starting position.\n\nTechnical Components\nBuilt a line-following robot using Arduino Uno with four IR sensors for hospital navigation\nIntegrated a 3-DOF robotic arm controlled by NodeMCU for medication transport\nImplemented vital sign monitoring using MAX30105 (pulse) and MLX90614 (temperature) sensors\nDeveloped mobile interface using Blynk platform for remote monitoring and control\nEstablished UART and I2C communication between components\nKey Features\nAutonomous navigation through hospital wards\nReal-time vital sign monitoring and data transmission\nRemote control through mobile application\nAutomated medication delivery system\nWiFi-enabled data transmission\nThis project took us more time than expected, since I had no prior experience in working with Arduino, or building robots from scratch, and the other group members also were assigned unfamiliar tasks. But it was a very fruitful experience, especially in the end when we saw the whole bot perform end-to-end operations.",
+    "mainImage": "/images/projects/nursebot-healthcare-automation-system.png",
+    "projectUrl": null,
+    "publishedAt": "2023-12-26T03:15:00.000Z",
+    "slug": "nursebot-healthcare-automation-system",
+    "tags": [
+      "Arduino",
+      "NodeMCU (ESP8266)",
+      "IoT",
+      "Blynk Platform",
+      "Sensors",
+      "Robotics"
+    ],
+    "title": "NurseBot: Healthcare Automation System",
+    "id": "f762290c-bc02-4c4e-8cd3-4b95eebe3022"
+  }
+]

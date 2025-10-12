@@ -1,39 +1,13 @@
 // src/app/experience/page.tsx
 import Link from "next/link";
-import { type SanityDocument } from "next-sanity";
-import { client } from "@/sanity/lib/client";
 import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
+import { getExperience } from "@/lib/data";
 
-interface ExperienceItem extends SanityDocument {
-  jobTitle: string;
-  company: string;
-  slug: { current: string };
-  startDate: string;
-  endDate: string;
-  companyLogo?: {
-    _type: 'image';
-    asset: {
-      _ref: string;
-      _type: 'reference';
-    };
-  };
-  location?: string;
-}
-
-const EXPERIENCE_QUERY = `*[_type == "experience"]|order(endDate desc, startDate desc){
-  _id, jobTitle, company, slug, startDate, endDate, companyLogo, location
-}`;
-
-const revalidateOptions = { next: { revalidate: 60 } };
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function ExperiencePage() {
-  const experienceItems = await client.fetch<ExperienceItem[]>(
-    EXPERIENCE_QUERY,
-    {},
-    revalidateOptions
-  );
+  const experienceItems = getExperience();
 
   return (
     <Layout>
@@ -41,16 +15,16 @@ export default async function ExperiencePage() {
       {experienceItems && experienceItems.length > 0 ? (
         <div className="space-y-8 max-w-3xl mx-auto">
           {experienceItems.map((item) => (
-            <div key={item._id} className="p-6 border border-accent rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 bg-background">
-              <Link href={`/experience/${item.slug.current}`} className="block group">
+            <div key={item.id} className="p-6 border border-accent rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 bg-background">
+              <Link href={`/experience/${item.slug}`} className="block group">
                 <div className="flex items-start space-x-4">
                   {item.companyLogo && (
                     <div className="flex-shrink-0 w-20 h-20 relative rounded-md overflow-hidden border border-accent/50">
                       <Image
-                        src={urlFor(item.companyLogo).width(100).height(100).url()}
+                        src={item.companyLogo}
                         alt={`${item.company} logo`}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: 'contain' }}
                       />
                     </div>
                   )}
@@ -69,7 +43,7 @@ export default async function ExperiencePage() {
           ))}
         </div>
       ) : (
-        <p className="text-center text-text/70">No work experience found. Add some in the Sanity Studio!</p>
+        <p className="text-center text-text/70">No work experience found. Add some via the admin panel!</p>
       )}
     </Layout>
   );

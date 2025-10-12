@@ -1,0 +1,85 @@
+[
+  {
+    "body": [
+      {
+        "_key": "3a274cc43e3c",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "320e055ff191",
+            "_type": "span",
+            "marks": [],
+            "text": "The earlier version of this website was a template I cloned from github, and changed the text on it. It served an immediate purpose, but for any type of modification, addition, or improvement, it proved to be very tiring and boring. So I decided to revamp and make this new website from scratch, which might very well look worse than the earlier one, but this is fully customisable and makes it very easy for me to add new posts such as blogs, projects, experiences etc without even touching the codebase, and allows me to add more sections to the website that could depict a wide range of stuff, such as the FPL live ranking, the map for places I've visited, giving me a lot of freedom to experiment, which is what I want from a personal portfolio website."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "mainImage": null,
+    "publishedAt": "2025-05-26T22:50:04.804Z",
+    "slug": "personal-website-v2",
+    "title": "Personal Website v2",
+    "id": "043628f7-c910-4e07-88f6-c27793b5cd75"
+  },
+  {
+    "body": [
+      {
+        "_key": "1e4574a6aee6",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "e579b8b81338",
+            "_type": "span",
+            "marks": [],
+            "text": "testing second try at a new portfolio website"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "867ecb7de104",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "ceb84242d408",
+            "_type": "span",
+            "marks": [],
+            "text": ""
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "mainImage": null,
+    "publishedAt": "2025-05-21T01:37:14.679Z",
+    "slug": "first-blog-post",
+    "title": "First blog post",
+    "id": "e158959a-d02a-42d4-8305-b188f80992d2"
+  },
+  {
+    "body": [
+      {
+        "_key": "2beafa96edfa",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "696cea63c943",
+            "_type": "span",
+            "marks": [],
+            "text": "I thought of making Where Next one random thursday night, and started working on it the next morning. This time, to counter the issue of deciding when does a personal project 'end', I told myself this would strictly be a weekend project. This helped a lot in properly finalizing the scope, difficulty and complexity of this project. Apart from some of the technical goals achieved while making this project, such as using the Places APIs, working with js and python, and most importantly setting up alerts and quotas for apis, the main goal that I achieved was to actually complete and wrap everything up by Monday, including hosting."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "mainImage": null,
+    "publishedAt": "2025-01-26T03:22:00.000Z",
+    "slug": "experiences-of-doing-a-weekend-project",
+    "title": "Experiences of doing a weekend project",
+    "id": "ee724098-68e1-4556-85f1-4d85c23cbe7f"
+  }
+]

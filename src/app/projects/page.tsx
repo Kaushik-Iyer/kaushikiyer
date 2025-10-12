@@ -1,40 +1,13 @@
 // src/app/projects/page.tsx
 import Link from "next/link";
-import { type SanityDocument } from "next-sanity";
-import { client } from "@/sanity/lib/client";
 import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
+import { getProjects } from "@/lib/data";
 
-interface SanityImage {
-  _type: 'image';
-  asset: {
-    _ref: string;
-    _type: 'reference';
-  };
-  alt?: string;
-}
-  
-interface Project extends SanityDocument {
-  title: string;
-  slug: { current: string };
-  publishedAt: string;
-  description?: string;
-  mainImage?: SanityImage;
-}
-
-const PROJECTS_QUERY = `*[_type == "project" && defined(slug.current)]|order(publishedAt desc){
-  _id, title, slug, publishedAt, description, mainImage
-}`;
-
-const revalidateOptions = { next: { revalidate: 60 } };
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function ProjectsPage() {
-  const projects = await client.fetch<Project[]>(
-    PROJECTS_QUERY,
-    {},
-    revalidateOptions
-  );
+  const projects = getProjects();
 
   return (
     <Layout>
@@ -42,15 +15,15 @@ export default async function ProjectsPage() {
       {projects && projects.length > 0 ? (
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <li key={project._id} className="border border-accent rounded-lg overflow-hidden group hover:shadow-lg transition-shadow duration-300 bg-background">
-              <Link href={`/projects/${project.slug.current}`} className="block">
+            <li key={project.id} className="border border-accent rounded-lg overflow-hidden group hover:shadow-lg transition-shadow duration-300 bg-background">
+              <Link href={`/projects/${project.slug}`} className="block">
                 {project.mainImage && (
                   <div className="w-full h-48 relative overflow-hidden">
                     <Image
-                      src={urlFor(project.mainImage).width(400).height(300).fit('crop').url()}
+                      src={project.mainImage}
                       alt={project.title}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      style={{ objectFit: 'cover' }}
                       className="group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -77,7 +50,7 @@ export default async function ProjectsPage() {
           ))}
         </ul>
       ) : (
-        <p className="text-text/70">No projects found. Start by adding some in the Sanity Studio!</p>
+        <p className="text-text/70">No projects found. Add some via the admin panel!</p>
       )}
     </Layout>
   );

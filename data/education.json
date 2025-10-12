@@ -1,0 +1,24 @@
+[
+  {
+    "degree": "M.Eng in Computer Science",
+    "description": null,
+    "endDate": "2025-05",
+    "institution": "Cornell University",
+    "institutionLogo": "/images/education/m-eng-in-computer-science-cornell-university.png",
+    "orderRank": null,
+    "slug": "m-eng-in-computer-science-cornell-university",
+    "startDate": "2024-08-01",
+    "id": "20589abd-8cc1-41b0-84d5-4aa98e537717"
+  },
+  {
+    "degree": "B.Tech in Computer Engineering",
+    "description": null,
+    "endDate": "2024-05",
+    "institution": "K.J Somaiya College of Engineering",
+    "institutionLogo": "/images/education/b-tech-in-computer-engineering-k-j-somaiya-college-of-engineering.png",
+    "orderRank": null,
+    "slug": "b-tech-in-computer-engineering-k-j-somaiya-college-of-engineering",
+    "startDate": "2020-06-01",
+    "id": "fe83d011-18f4-4ea6-a0f0-cc393db72444"
+  }
+]

@@ -5,8 +5,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import L, { LatLngExpression, GeoJSON as LeafletGeoJSON } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { client } from '@/sanity/lib/client';
 import { Feature, FeatureCollection, Geometry } from 'geojson'; // Added import
+import type { VisitedPlace } from '@/lib/types';
 
 // Define the expected properties for our GeoJSON features
 interface CustomFeatureProperties {
@@ -14,19 +14,6 @@ interface CustomFeatureProperties {
   admin: string;
   // Add any other specific properties you expect from your custom.geo.json
 }
-
-interface VisitedPlace {
-  _id: string;
-  countryCode: string; // ISO A2 code, e.g., "US", "JP"
-  countryName: string;
-  // Optional: Add latitude/longitude if you want to place markers or center map differently
-  // latitude?: number;
-  // longitude?: number;
-}
-
-const VISITED_PLACES_QUERY = `*[_type == "visitedPlace" && defined(countryCode)]{
-  _id, countryName, countryCode
-}`;
 
 // Default map center and zoom
 const defaultCenter: LatLngExpression = [20, 0]; // Centered more globally
@@ -47,14 +34,19 @@ const TravelMap: React.FC = () => {
       try {
         setLoading(true);
         setError(null);
-        const [placesData, geoResponse] = await Promise.all([
-          client.fetch<VisitedPlace[]>(VISITED_PLACES_QUERY),
+        const [placesResponse, geoResponse] = await Promise.all([
+          fetch('/api/admin/visitedPlaces'),
           fetch(geoJsonUrl)
         ]);
 
+        if (!placesResponse.ok) {
+          throw new Error(`Failed to fetch visited places: ${placesResponse.statusText}`);
+        }
         if (!geoResponse.ok) {
           throw new Error(`Failed to fetch GeoJSON: ${geoResponse.statusText}`);
         }
+        
+        const placesData = await placesResponse.json();
         const geoData = await geoResponse.json();
 
         console.log("Fetched visited places:", placesData);

@@ -1,0 +1,52 @@
+[
+  {
+    "orderRank": null,
+    "personImage": null,
+    "personName": "Yash Dave",
+    "relation": "Engineering@Skima",
+    "slug": "yash-dave-engineering-skima",
+    "testimonialContent": [
+      {
+        "_key": "c64ae582738e",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "a19bc72dd52a",
+            "_type": "span",
+            "marks": [],
+            "text": "I worked closely with Kaushik during his year-long internship at Skima, where he quickly became key to our team. Kaushik balanced working alone and with others well. He handled backend tasks like developing our billing using the Stripe SDK, and the analytics dashboard using Elasticsearch and Sidekiq workers on his own, while also collaborating regularly with frontend, content, and testing teams to make sure everything worked together smoothly. He owned his work, keeping everyone updated about progress as well as challenges, without needing reminders. An important part of Kaushik's growth was learning to code with users in mind, which significantly improved his work quality. He demonstrated strong skills in Ruby on Rails, effectively utilizing ActiveRecord for database operations with PostgreSQL. His optimizations resulted in query speed improvements of up to 70%. I recommend Kaushik for any software development job. His technical skills, user-focused approach, and teamwork would make him valuable to any company."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "testimonialDate": "2024-07-01",
+    "id": "2e3e080d-4681-4452-84fe-2d9aafde238f"
+  },
+  {
+    "orderRank": null,
+    "personImage": null,
+    "personName": "Sumit Rai",
+    "relation": "Co-founder at Skima",
+    "slug": "sumit-rai-co-founder-at-skima",
+    "testimonialContent": [
+      {
+        "_key": "c4a1b42d5233",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "b8e0d4ea1d52",
+            "_type": "span",
+            "marks": [],
+            "text": "I had Kaushik as an intern for over a year at Skima, where he was deeply involved in developing our product's functionalities. Despite juggling college commitments, he was regularly present, completing tasks on time, and handling on-the-spot assignments effectively. Over the year, Kaushik progressed from minimal technical experience to independently creating end-to-end features. Kaushik’s technical proficiency, work ethic, and positive attitude will surely make him a valuable addition to any organisation."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "testimonialDate": "2024-07-01",
+    "id": "7b3f274a-7510-470f-90d3-8acd41af8009"
+  }
+]

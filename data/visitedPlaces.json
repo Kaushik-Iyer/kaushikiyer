@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1760247506587",
+    "countryName": "India",
+    "countryCode": "IN",
+    "city": "Mumbai",
+    "dateVisited": "",
+    "notes": ""
+  },
+  {
+    "id": "1760247523151",
+    "countryName": "United States",
+    "countryCode": "US",
+    "city": "",
+    "dateVisited": "",
+    "notes": ""
+  },
+  {
+    "id": "1760247544659",
+    "countryName": "Vietnam",
+    "countryCode": "VN",
+    "city": "",
+    "dateVisited": "",
+    "notes": ""
+  },
+  {
+    "id": "1760247562025",
+    "countryName": "Egypt",
+    "countryCode": "EG",
+    "city": "",
+    "dateVisited": "",
+    "notes": ""
+  },
+  {
+    "id": "1760247576466",
+    "countryName": "Oman",
+    "countryCode": "OM",
+    "city": "",
+    "dateVisited": "",
+    "notes": ""
+  },
+  {
+    "id": "1760247585736",
+    "countryName": "Qatar",
+    "countryCode": "QA",
+    "city": "",
+    "dateVisited": "",
+    "notes": ""
+  },
+  {
+    "id": "1760247605346",
+    "countryName": "United Arab Emirates",
+    "countryCode": "AE",
+    "city": "",
+    "dateVisited": "",
+    "notes": ""
+  }
+]

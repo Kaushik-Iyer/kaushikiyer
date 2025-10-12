@@ -1,0 +1,414 @@
+[
+  {
+    "company": "Cornell University Student Disability Services",
+    "companyLogo": null,
+    "description": [
+      {
+        "_key": "13454b42c3f5",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "b8ce6a341b42",
+            "_type": "span",
+            "marks": [],
+            "text": "In my role at Cornell University, I work to bridge the gap between traditional educational materials and accessible formats, ensuring that all students have equal access to learning resources:"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "a595b2ad79ae",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "ad779916b146",
+            "_type": "span",
+            "marks": [],
+            "text": "Transform complex textbooks and academic materials into accessible formats using advanced document processing techniques"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "5db797f70402",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "200f269cde7d",
+            "_type": "span",
+            "marks": [],
+            "text": "Utilize Microsoft Word's advanced features to optimize document layouts, headers, footers, and references for various accessibility needs"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "d1bb6127d49f",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "2aec42210297",
+            "_type": "span",
+            "marks": [],
+            "text": "Collaborate daily through Microsoft Teams to coordinate task assignments and ensure timely delivery of converted materials"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "5b37e4f370fe",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "a84396fc6b2d",
+            "_type": "span",
+            "marks": [],
+            "text": "Work closely with disability services to understand and implement specific accessibility requirements for different learning needs"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "cbdc6d0f216e",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "e16f74b78d2a",
+            "_type": "span",
+            "marks": [],
+            "text": "Maintain detailed documentation of conversion processes and best practices"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "3cc37d4c0e74",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "766e046e8d50",
+            "_type": "span",
+            "marks": [],
+            "text": "Participate in regular training sessions to stay updated with the latest accessibility standards and tools"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "51d4221c2efe",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "c76ed44ddac4",
+            "_type": "span",
+            "marks": [],
+            "text": "This position has deepened my understanding of inclusive design principles and the critical role of technology in creating equitable educational experiences."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "endDate": "2025-05",
+    "jobTitle": "Document Conversion Assistant",
+    "location": "Ithaca, NY",
+    "orderRank": null,
+    "slug": "document-conversion-assistant-cornell-university-student-disability-services",
+    "startDate": "2024-08-01",
+    "tags": null,
+    "id": "ea1593b3-edd0-4c47-93bb-27696cfcc7cd"
+  },
+  {
+    "company": "Skima.ai",
+    "companyLogo": null,
+    "description": [
+      {
+        "_key": "a2011bb9a6e8",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "43bde41f9e38",
+            "_type": "span",
+            "marks": [],
+            "text": "My journey at Skima.ai was transformative, working at the intersection of recruitment technology and artificial intelligence. As one of the early engineering interns at this ambitious startup, I had the opportunity to work on critical infrastructure and performance optimization that directly impacted our user experience."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "4cd1b6715b19",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "430f60a87658",
+            "_type": "span",
+            "marks": [],
+            "text": "I spearheaded several key initiatives that significantly improved our platform's performance:"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "fe7683b2f8ce",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "5249155beb6a",
+            "_type": "span",
+            "marks": [],
+            "text": "Engineered a 70% improvement in query speed through sophisticated optimization of Ruby on Rails ActiveRecord with PostgreSQL, transforming our candidate listing pages from sluggish to near-instantaneous"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "c4b5e8e3e250",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "f586f3d2e009",
+            "_type": "span",
+            "marks": [],
+            "text": "Architected and implemented an asynchronous processing system using Sidekiq workers and cron jobs, dramatically improving system responsiveness for our recruitment partners"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "55bd2f0d6cea",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "a1c5d4d65916",
+            "_type": "span",
+            "marks": [],
+            "text": "Led the migration of our critical workflow to AWS Lambda, achieving a 50% boost in processing speed and enabling real-time data-driven decision making"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "2bef64efb33d",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "ff61db6f0fb9",
+            "_type": "span",
+            "marks": [],
+            "text": "Integrated and fine-tuned multiple third-party APIs including Stripe for payments and Greenhouse for ATS integration"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "99e10bf8fce9",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "4116fa638c12",
+            "_type": "span",
+            "marks": [],
+            "text": "Developed robust web scraping solutions using Python and Selenium to expand our market analysis capabilities"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "ca7b75481050",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "4fdfa32fbde2",
+            "_type": "span",
+            "marks": [],
+            "text": "Implemented advanced LLM prompt engineering using OpenAI's Ruby gem, automating diverse data generation and enhancing our AI-powered features"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "c3afdb750c8b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "f727891c1790",
+            "_type": "span",
+            "marks": [],
+            "text": "Working in a fast-paced startup environment taught me invaluable lessons about rapid iteration, cross-functional collaboration, and the importance of building scalable solutions. Each feature release directly impacted our user acquisition and retention metrics, providing immediate feedback on our engineering decisions."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "endDate": "2024-06",
+    "jobTitle": "Software Developer Intern",
+    "location": "Mumbai, India",
+    "orderRank": null,
+    "slug": "software-developer-intern-skima-ai",
+    "startDate": "2023-06-01",
+    "tags": null,
+    "id": "0f64eaa4-00a1-47da-bb9e-f12cd88668a6"
+  },
+  {
+    "company": "DeepCytes",
+    "companyLogo": null,
+    "description": [
+      {
+        "_key": "a8018f4f2c09",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "c970f059712c",
+            "_type": "span",
+            "marks": [],
+            "text": "At DeepCytes, I immersed myself in the fascinating world of cybersecurity and financial fraud investigation. This internship provided me with hands-on experience in digital forensics and market analysis:"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "69d0b342e867",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "036bbefa5e01",
+            "_type": "span",
+            "marks": [],
+            "text": "Configured and deployed sophisticated forensic tools using Docker containers, ensuring consistent and reliable investigation environments"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "cd4101f7c86d",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "65e3cbaeb06d",
+            "_type": "span",
+            "marks": [],
+            "text": "Participated in high-stakes investigations into stock market fraud, developing analytical skills and attention to detail"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "40ebee8190a3",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "3a76798c274d",
+            "_type": "span",
+            "marks": [],
+            "text": "Collaborated with senior investigators to analyze complex financial data patterns and identify potential fraudulent activities"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "e96fbf9bfea1",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "f50da78c92b9",
+            "_type": "span",
+            "marks": [],
+            "text": "Gained practical experience with GitHub for version control and collaborative forensic tool development"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "ab858112b627",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "a36511a59a58",
+            "_type": "span",
+            "marks": [],
+            "text": "Learned to work with sensitive financial data while maintaining strict confidentiality protocols"
+          }
+        ],
+        "level": 1,
+        "listItem": "bullet",
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "33d093114959",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "97885655b1de",
+            "_type": "span",
+            "marks": [],
+            "text": "This experience gave me valuable insights into the intersection of technology and financial security, teaching me the importance of precision and thoroughness in security-critical applications."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "endDate": "2022-08",
+    "jobTitle": "Cyber Security Intern",
+    "location": "Mumbai, India",
+    "orderRank": null,
+    "slug": "cyber-security-intern-deepcytes",
+    "startDate": "2022-06-01",
+    "tags": null,
+    "id": "ca2bae56-fd25-46ee-a291-38aeeb48c804"
+  }
+]

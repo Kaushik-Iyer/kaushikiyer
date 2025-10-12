@@ -1,24 +1,15 @@
 // src/app/page.tsx
 import Link from "next/link";
-import { type SanityDocument } from "next-sanity";
-import { client } from "@/sanity/lib/client"; 
 import Layout from "@/app/components/layout/Layout";
 import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from "@portabletext/react";
 import { TravelMap, FPLScoreCard } from '@/app/components/ClientOnlyWrapper';
+import { getProjects, getExperience, getEducation, getTestimonials, getPosts } from "@/lib/data";
+import type { Project, Experience, Education, Testimonial, Post } from "@/lib/types";
 
-// Define Sanity image type
-interface SanityImage {
-  _type: 'image';
-  asset: {
-    _ref: string;
-    _type: 'reference';
-  };
-  alt?: string;
-}
+export const revalidate = 60; // Revalidate every 60 seconds
 
-// Define PortableText block types
+// Define PortableText block types for rendering
 interface PortableTextSpan {
   _type: 'span';
   text: string;
@@ -36,64 +27,6 @@ interface PortableTextBlock {
     href?: string;
   }>;
 }
-
-// Interface definitions with proper types
-interface Post extends SanityDocument {
-  title: string;
-  slug: { current: string };
-  publishedAt: string;
-  body?: PortableTextBlock[]; 
-}
-
-interface Project extends SanityDocument {
-  title: string;
-  slug: { current: string };
-  description?: string;
-  mainImage?: SanityImage;
-}
-
-interface EducationItem extends SanityDocument {
-  degree: string;
-  institution: string;
-  slug: { current: string };
-  endDate: string;
-  institutionLogo?: SanityImage;
-}
-
-interface ExperienceItem extends SanityDocument {
-  jobTitle: string;
-  company: string;
-  slug: { current: string };
-  endDate: string;
-  companyLogo?: SanityImage;
-}
-
-interface Testimonial extends SanityDocument {
-  personName: string;
-  relation?: string;
-  testimonialContent: PortableTextBlock[];
-  slug: { current: string };
-  personImage?: SanityImage;
-}
-
-// Queries for the most recent item of each type
-const RECENT_POST_QUERY = `*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0]{
-  _id, title, slug, publishedAt, body
-}`;
-const RECENT_PROJECT_QUERY = `*[_type == "project" && defined(slug.current)]|order(publishedAt desc)[0]{
-  _id, title, slug, description, mainImage
-}`;
-const RECENT_EDUCATION_QUERY = `*[_type == "education" && defined(slug.current)]|order(endDate desc, _createdAt desc)[0]{
-  _id, degree, institution, slug, endDate, institutionLogo
-}`;
-const RECENT_EXPERIENCE_QUERY = `*[_type == "experience" && defined(slug.current)]|order(endDate desc, _createdAt desc)[0]{
-  _id, jobTitle, company, slug, endDate, companyLogo
-}`;
-const RECENT_TESTIMONIAL_QUERY = `*[_type == "testimonial" && defined(slug.current)]|order(testimonialDate desc, _createdAt desc)[0]{
-  _id, personName, relation, testimonialContent, slug, personImage
-}`;
-
-const revalidateOptions = { next: { revalidate: 60 } };
 
 // Helper to truncate Portable Text for preview
 const truncatePortableText = (blocks: PortableTextBlock[], maxLength: number): PortableTextBlock[] => {
@@ -133,20 +66,20 @@ const truncatePortableText = (blocks: PortableTextBlock[], maxLength: number): P
 
 
 export default async function HomePage() {
-  const [
-    recentPost,
-    recentProject,
-    recentEducation,
-    recentExperience,
-    recentTestimonial
-  ] = await Promise.all([
-    client.fetch<Post | null>(RECENT_POST_QUERY, {}, revalidateOptions),
-    client.fetch<Project | null>(RECENT_PROJECT_QUERY, {}, revalidateOptions),
-    client.fetch<EducationItem | null>(RECENT_EDUCATION_QUERY, {}, revalidateOptions),
-    client.fetch<ExperienceItem | null>(RECENT_EXPERIENCE_QUERY, {}, revalidateOptions),
-    client.fetch<Testimonial | null>(RECENT_TESTIMONIAL_QUERY, {}, revalidateOptions),
-  ]);
-  const fplManagerId = 154063; // User's FPL Manager ID
+  // Get most recent items from JSON data
+  const posts = getPosts();
+  const projects = getProjects();
+  const education = getEducation();
+  const experience = getExperience();
+  const testimonials = getTestimonials();
+
+  const recentPost = posts[0] || null;
+  const recentProject = projects[0] || null;
+  const recentEducation = education[0] || null;
+  const recentExperience = experience[0] || null;
+  const recentTestimonial = testimonials[0] || null;
+
+  const fplManagerId = 1361280; // User's FPL Manager ID
 
   return (
     <Layout>
@@ -168,7 +101,6 @@ export default async function HomePage() {
         <section>
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-text">My FPL Team Status</h2>
-            {/* Optional: Add a link to official FPL site or manager's page */}
           </div>
           <FPLScoreCard managerId={fplManagerId} />
         </section>
@@ -183,7 +115,7 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
-              <Link href={`/${recentPost.slug.current}`} className="block group">
+              <Link href={`/blog/${recentPost.slug}`} className="block group">
                 <h3 className="text-xl sm:text-2xl font-semibold mb-2 group-hover:text-primary text-text">{recentPost.title}</h3>
                 {recentPost.body && (
                   <div className="prose prose-sm max-w-none text-text/70 line-clamp-3 mb-3 dark:prose-invert">
@@ -210,14 +142,14 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
-              <Link href={`/projects/${recentProject.slug.current}`} className="block group">
+              <Link href={`/projects/${recentProject.slug}`} className="block group">
                 {recentProject.mainImage && (
                   <div className="w-full h-48 relative overflow-hidden rounded-md mb-4">
                     <Image
-                      src={urlFor(recentProject.mainImage).width(400).height(300).fit('crop').url()}
+                      src={recentProject.mainImage}
                       alt={recentProject.title}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      style={{ objectFit: 'cover' }}
                       className="group-hover:scale-105 transition-transform"
                     />
                   </div>
@@ -241,15 +173,15 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
-              <Link href={`/education/${recentEducation.slug.current}`} className="block group">
+              <Link href={`/education/${recentEducation.slug}`} className="block group">
                 <div className="flex items-center space-x-4">
                   {recentEducation.institutionLogo && (
                     <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-accent/50">
                       <Image
-                        src={urlFor(recentEducation.institutionLogo).width(100).height(100).url()}
+                        src={recentEducation.institutionLogo}
                         alt={`${recentEducation.institution} logo`}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: 'contain' }}
                       />
                     </div>
                   )}
@@ -271,15 +203,15 @@ export default async function HomePage() {
               <h2 className="text-2xl sm:text-3xl font-bold text-text">Recent Experience</h2>
             </div>
             <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
-              <Link href={`/experience/${recentExperience.slug.current}`} className="block group">
+              <Link href={`/experience/${recentExperience.slug}`} className="block group">
                 <div className="flex items-center space-x-4">
                   {recentExperience.companyLogo && (
                     <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-accent/50">
                       <Image
-                        src={urlFor(recentExperience.companyLogo).width(100).height(100).url()}
+                        src={recentExperience.companyLogo}
                         alt={`${recentExperience.company} logo`}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: 'contain' }}
                       />
                     </div>
                   )}
@@ -314,15 +246,15 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="p-6 border border-accent rounded-lg shadow-lg bg-background">
-              <Link href={`/testimonials/${recentTestimonial.slug.current}`} className="block group">
+              <Link href={`/testimonials/${recentTestimonial.slug}`} className="block group">
                 <div className="flex items-center space-x-4">
                   {recentTestimonial.personImage && (
                     <div className="flex-shrink-0 w-16 h-16 relative rounded-md overflow-hidden border border-accent/50">
                       <Image
-                        src={urlFor(recentTestimonial.personImage).width(100).height(100).url()}
+                        src={recentTestimonial.personImage}
                         alt={recentTestimonial.personName}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        style={{ objectFit: 'cover' }}
                       />
                     </div>
                   )}
