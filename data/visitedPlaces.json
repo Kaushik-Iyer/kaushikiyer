@@ -47,9 +47,12 @@
     "id": "1760247576466",
     "countryName": "Oman",
     "countryCode": "OM",
-    "city": "",
+    "city": "Muscat",
     "dateVisited": "",
-    "notes": ""
+    "notes": "",
+    "latitude": 23.588,
+    "longitude": 58.3829,
+    "cityImage": "/images/visitedPlaces/1760336680420-oman.jpg"
   },
   {
     "id": "1760247585736",
