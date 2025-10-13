@@ -86,6 +86,82 @@ export async function commitDataToGithub<T extends DataType>(
 }
 
 /**
+ * Upload an image file to GitHub
+ * This is used in production where the file system is read-only
+ */
+export async function uploadImageToGithub(
+  category: string,
+  filename: string,
+  buffer: Buffer,
+  commitMessage?: string
+): Promise<string> {
+  if (!GITHUB_TOKEN) {
+    console.error('GITHUB_TOKEN not configured');
+    throw new Error('GitHub token not configured');
+  }
+
+  try {
+    const filePath = `public/images/${category}/${filename}`;
+    const message = commitMessage || `Upload image ${filename} via admin panel`;
+
+    // Check if file already exists (to get SHA for update, or create new)
+    const fileUrl = `${GITHUB_API}/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}?ref=${GITHUB_BRANCH}`;
+    
+    const fileResponse = await fetch(fileUrl, {
+      headers: {
+        'Authorization': `token ${GITHUB_TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json',
+      },
+    });
+
+    let sha: string | undefined;
+    if (fileResponse.ok) {
+      const fileData: GitHubFile = await fileResponse.json();
+      sha = fileData.sha;
+    }
+
+    // Encode image as base64
+    const encodedContent = buffer.toString('base64');
+
+    // Upload or update the file
+    const updateUrl = `${GITHUB_API}/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}`;
+    
+    const body: any = {
+      message,
+      content: encodedContent,
+      branch: GITHUB_BRANCH,
+    };
+
+    if (sha) {
+      body.sha = sha; // Include SHA if updating existing file
+    }
+
+    const updateResponse = await fetch(updateUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${GITHUB_TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!updateResponse.ok) {
+      const errorText = await updateResponse.text();
+      console.error('Failed to upload image to GitHub:', errorText);
+      throw new Error(`Failed to upload image: ${updateResponse.statusText}`);
+    }
+
+    const imagePath = `/images/${category}/${filename}`;
+    console.log(`Successfully uploaded ${filename} to GitHub`);
+    return imagePath;
+  } catch (error) {
+    console.error('Error uploading image to GitHub:', error);
+    throw error;
+  }
+}
+
+/**
  * Trigger Vercel redeployment after data changes
  * This ensures the static data is updated in production
  */

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifySession } from '@/lib/auth';
+import { uploadImageToGithub } from '@/lib/github';
 import fs from 'fs';
 import path from 'path';
 
@@ -38,20 +39,28 @@ export async function POST(request: NextRequest) {
     const originalName = file.name.toLowerCase().replace(/[^a-z0-9.-]/g, '-');
     const filename = `${timestamp}-${originalName}`;
 
-    // Ensure directory exists
-    const uploadDir = path.join(process.cwd(), 'public', 'images', category);
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-
-    // Save file
-    const filepath = path.join(uploadDir, filename);
+    // Get file buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    fs.writeFileSync(filepath, buffer);
 
-    // Return the path that should be stored in JSON
-    const imagePath = `/images/${category}/${filename}`;
+    let imagePath: string;
+
+    // In development, save locally
+    if (process.env.NODE_ENV === 'development') {
+      const uploadDir = path.join(process.cwd(), 'public', 'images', category);
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+      
+      const filepath = path.join(uploadDir, filename);
+      fs.writeFileSync(filepath, buffer);
+      imagePath = `/images/${category}/${filename}`;
+      console.log(`Successfully saved image locally: ${imagePath}`);
+    } else {
+      // In production, upload to GitHub
+      imagePath = await uploadImageToGithub(category, filename, buffer);
+      console.log(`Successfully uploaded image to GitHub: ${imagePath}`);
+    }
 
     return NextResponse.json({ 
       success: true, 
@@ -61,7 +70,10 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Upload error:', error);
-    return NextResponse.json({ error: 'Failed to upload file' }, { status: 500 });
+    return NextResponse.json({ 
+      error: 'Failed to upload file',
+      details: error instanceof Error ? error.message : String(error)
+    }, { status: 500 });
   }
 }
 

@@ -205,7 +205,7 @@ export default async function HomePage() {
           <section>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl sm:text-3xl font-bold text-text">What People Say</h2>
-              <Link href="/#testimonials" className="text-primary hover:text-primary/80 hover:underline">
+              <Link href="/testimonials" className="text-primary hover:text-primary/80 hover:underline">
                 View All Testimonials &rarr;
               </Link>
             </div>
