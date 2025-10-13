@@ -25,9 +25,12 @@
     "id": "1760247544659",
     "countryName": "Vietnam",
     "countryCode": "VN",
-    "city": "",
+    "city": "Hanoi",
     "dateVisited": "",
-    "notes": ""
+    "notes": "",
+    "cityImage": "/images/visitedPlaces/1760335820881-hanoi.jpg",
+    "latitude": 21.03,
+    "longitude": 105.87
   },
   {
     "id": "1760247562025",
