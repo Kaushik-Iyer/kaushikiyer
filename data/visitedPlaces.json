@@ -63,5 +63,16 @@
     "city": "",
     "dateVisited": "",
     "notes": ""
+  },
+  {
+    "id": "1760336329646",
+    "countryName": "Vietnam",
+    "countryCode": "VN",
+    "city": "Da Nang",
+    "dateVisited": "",
+    "notes": "",
+    "latitude": 16.06,
+    "longitude": 108.2111,
+    "cityImage": "/images/visitedPlaces/1760336326613-da-nang.jpg"
   }
 ]
