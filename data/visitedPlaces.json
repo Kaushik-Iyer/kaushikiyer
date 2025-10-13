@@ -69,9 +69,12 @@
     "id": "1760247605346",
     "countryName": "United Arab Emirates",
     "countryCode": "AE",
-    "city": "",
+    "city": "Dubai",
     "dateVisited": "",
-    "notes": ""
+    "notes": "",
+    "cityImage": "/images/visitedPlaces/1760337515913-dubai.jpg",
+    "latitude": 25.2048,
+    "longitude": 55.2708
   },
   {
     "id": "1760336329646",
