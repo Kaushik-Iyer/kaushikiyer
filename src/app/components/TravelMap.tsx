@@ -161,25 +161,32 @@ const TravelMap: React.FC = () => {
             key={place.id} 
             position={[place.latitude!, place.longitude!]}
           >
-            <Popup>
-              <div className="text-center">
-                <h3 className="font-semibold text-lg mb-2">
+            <Popup 
+              maxWidth={400}
+              minWidth={300}
+              autoPan={true}
+              autoPanPadding={[50, 50]}
+              keepInView={false}
+              className="custom-popup"
+            >
+              <div className="text-center p-2">
+                <h3 className="font-bold text-xl mb-3">
                   {place.city || place.countryName}
                 </h3>
                 {place.cityImage && (
                   <img 
                     src={place.cityImage} 
                     alt={place.city || place.countryName}
-                    className="w-48 h-32 object-cover rounded mb-2"
+                    className="w-full h-48 object-cover rounded-lg mb-3 shadow-md"
                   />
                 )}
                 {place.notes && (
-                  <p className="text-sm text-gray-700 max-w-xs">
+                  <p className="text-base text-gray-700 leading-relaxed mb-2">
                     {place.notes}
                   </p>
                 )}
                 {place.dateVisited && (
-                  <p className="text-xs text-gray-500 mt-2">
+                  <p className="text-sm text-gray-500 mt-3 font-medium">
                     Visited: {new Date(place.dateVisited).toLocaleDateString()}
                   </p>
                 )}
