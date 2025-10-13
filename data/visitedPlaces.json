@@ -58,9 +58,12 @@
     "id": "1760247585736",
     "countryName": "Qatar",
     "countryCode": "QA",
-    "city": "",
+    "city": "Doha",
     "dateVisited": "",
-    "notes": ""
+    "notes": "",
+    "latitude": 25.2854,
+    "longitude": 51.531,
+    "cityImage": "/images/visitedPlaces/1760337430015-qatar.jpg"
   },
   {
     "id": "1760247605346",
