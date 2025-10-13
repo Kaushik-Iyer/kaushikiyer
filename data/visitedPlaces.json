@@ -36,9 +36,12 @@
     "id": "1760247562025",
     "countryName": "Egypt",
     "countryCode": "EG",
-    "city": "",
+    "city": "Cairo",
     "dateVisited": "",
-    "notes": ""
+    "notes": "No photo of me with the Sphinx. Apologies.",
+    "cityImage": "/images/visitedPlaces/1760336531677-egypt.jpg",
+    "latitude": 30.0444,
+    "longitude": 31.2357
   },
   {
     "id": "1760247576466",
