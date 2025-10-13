@@ -119,6 +119,7 @@ interface PlayerFixtureInfo {
 interface FPLScorecardDisplayData {
   teamName: string;
   gameweekPoints: number;
+  overallRank: number;
   fixtures: PlayerFixtureInfo[];
   currentGameweekName?: string;
   progressPercentage: number;
@@ -160,6 +161,7 @@ const FPLScoreCard = ({ managerId }: { managerId: number }) => {
         const picksData = await fetchViaProxy(`entry/${managerId}/event/${gameweekId}/picks/`) as FPLPicksData;
         
         const gameweekPoints = picksData.entry_history.points - picksData.entry_history.event_transfers_cost;
+        const overallRank = picksData.entry_history.overall_rank;
 
         const currentGameweekFixtures = await fetchViaProxy(`fixtures/?event=${gameweekId}`) as FPLFixture[];
 
@@ -231,6 +233,7 @@ const FPLScoreCard = ({ managerId }: { managerId: number }) => {
         setFplData({
           teamName,
           gameweekPoints,
+          overallRank,
           fixtures: processedFixtures,
           currentGameweekName: gameweekName,
           progressPercentage,
@@ -258,7 +261,8 @@ const FPLScoreCard = ({ managerId }: { managerId: number }) => {
     <div className="p-4 sm:p-6 border border-accent rounded-lg shadow-lg bg-background text-text">
       <h3 className="text-xl sm:text-2xl font-semibold mb-1 text-primary">{fplData.teamName}</h3>
       {fplData.currentGameweekName && <p className="text-sm text-text/80 mb-3">{fplData.currentGameweekName}</p>}
-      <p className="text-3xl font-bold mb-4">{fplData.gameweekPoints} <span className="text-lg font-normal">points</span></p>
+      <p className="text-3xl font-bold mb-2">{fplData.gameweekPoints} <span className="text-lg font-normal">points</span></p>
+      <p className="text-sm text-text/70 mb-4">Overall Rank: <span className="font-semibold text-text">{fplData.overallRank.toLocaleString()}</span></p>
       
       {fplData.activePlayersCount > 0 && (
         <div className="mb-4">
