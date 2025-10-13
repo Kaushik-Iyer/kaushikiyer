@@ -81,5 +81,25 @@
     "slug": "experiences-of-doing-a-weekend-project",
     "title": "Experiences of doing a weekend project",
     "id": "ee724098-68e1-4556-85f1-4d85c23cbe7f"
+  },
+  {
+    "id": "1760337002033",
+    "title": "Made some changes to this website once again",
+    "slug": "made-some-changes-to-this-website-once-again",
+    "mainImage": "",
+    "publishedAt": "2025-10-13",
+    "body": [
+      {
+        "_type": "block",
+        "children": [
+          {
+            "_type": "span",
+            "text": "Maintaining something as simple as a personal/portfolio website also seems like something that needs to be checked every few months atleast. Anyway, I made some changes such that all of the stuff that's being shown on the site can be read, edited, and removed all from within this website, without touching any code, without using any third party dependencies, like some content management tool. Till now that was what I was using, and I wanted to make this website as self-sufficient as possible, and I think this is it. I now have full control over doing anything and everything on this website, without needing to access any other account, or website, or even my own code for the most part. This required me an evening of intense vibe-coding, but that is all."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ]
   }
 ]
