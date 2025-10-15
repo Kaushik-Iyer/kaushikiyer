@@ -41,7 +41,9 @@ export async function POST(request: NextRequest) {
     const projects: Project[] = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     
     // Check if updating existing or creating new
-    const existingIndex = projects.findIndex(p => p.id === project.id);
+    const existingIndex = project.id && project.id.trim() !== '' 
+      ? projects.findIndex(p => p.id === project.id)
+      : -1;
     
     if (existingIndex >= 0) {
       // Update existing
@@ -53,7 +55,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Write back to file
-    writeJsonFile('projects.json', projects);
+    await writeJsonFile('projects.json', projects);
     
     return NextResponse.json({ success: true, project });
   } catch (error) {
@@ -84,7 +86,7 @@ export async function DELETE(request: NextRequest) {
     
     projects = projects.filter(p => p.id !== id);
     
-    writeJsonFile('projects.json', projects);
+    await writeJsonFile('projects.json', projects);
     
     return NextResponse.json({ success: true });
   } catch (error) {

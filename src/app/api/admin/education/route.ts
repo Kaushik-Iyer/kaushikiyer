@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       educationList.push(education);
     }
     
-    writeJsonFile('education.json', educationList);
+    await writeJsonFile('education.json', educationList);
     
     return NextResponse.json({ success: true, education });
   } catch (error) {
@@ -75,7 +75,7 @@ export async function DELETE(request: NextRequest) {
     
     educationList = educationList.filter(e => e.id !== id);
     
-    writeJsonFile('education.json', educationList);
+    await writeJsonFile('education.json', educationList);
     
     return NextResponse.json({ success: true });
   } catch (error) {

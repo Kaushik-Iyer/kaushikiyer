@@ -13,6 +13,13 @@ const config: Config = {
             fontFamily: {
                 sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
             },
+            colors: {
+                primary: 'var(--color-primary)',
+                secondary: 'var(--color-secondary)',
+                accent: 'var(--color-accent)',
+                background: 'var(--color-background)',
+                text: 'var(--color-text)',
+            },
         },
     },
     plugins: [],

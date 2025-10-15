@@ -63,11 +63,17 @@ export default function AdminProjectsPage() {
       });
 
       if (response.ok) {
+        alert('Project saved successfully!');
         setEditing(null);
         fetchProjects();
+      } else {
+        const errorData = await response.json();
+        console.error('Save failed:', errorData);
+        alert(`Failed to save project: ${errorData.error || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Failed to save project:', error);
+      alert('Failed to save project. Check console for details.');
     }
   };
 

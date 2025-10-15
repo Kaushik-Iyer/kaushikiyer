@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       experiences.push(experience);
     }
     
-    writeJsonFile('experience.json', experiences);
+    await writeJsonFile('experience.json', experiences);
     
     return NextResponse.json({ success: true, experience });
   } catch (error) {
@@ -79,7 +79,7 @@ export async function DELETE(request: NextRequest) {
     
     experiences = experiences.filter(e => e.id !== id);
     
-    writeJsonFile('experience.json', experiences);
+    await writeJsonFile('experience.json', experiences);
     
     return NextResponse.json({ success: true });
   } catch (error) {
