@@ -93,9 +93,11 @@
     "id": "project-1760504130963",
     "title": "Player Chaining",
     "slug": "player-chaining",
-    "description": "",
-    "projectUrl": "",
-    "tags": [],
+    "description": "This is a project I built this summer while watching the TIFO Football Podcast (https://www.youtube.com/@tifo-podcast). In the podcast, they play a game where they have to find out a chain link of players from Player A to Player B, across leagues and generations. I suddenly thought that this could be a very fun and at the same time a short project I could make, so I made this website. It took me a week to make this.\n\nAs a side note, this project also opened my eye to finally a real life use case of Leetcode, since the algorithm behind making the chains uses trees and breadth-first searches.",
+    "projectUrl": "https://playerchain.me/",
+    "tags": [
+      "Database"
+    ],
     "mainImage": "/images/projects/1760504124002-screenshot-2025-10-14-211655.png",
     "publishedAt": "2025-10-15"
   }
